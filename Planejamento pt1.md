@@ -157,7 +157,12 @@ aceita anexar imagem
 
 
 ### Funcionamento do questionário
-- há três botões por padrão quando o usuário está olhando para a questão
+- há três botões por padrão quando o usuário está olhando para a questão: pular (para pular a questão e mandar ela para o final - permitido até 3 vezes), limpar (limpar da altarnativa clicada) e próxima questão.
+
+* Modo oculto ao clicar
+- Modo de alternativas ocultas ao clicar funciona assim: quando o usuário clica em uma alternativa o texto delas some, inclusive sem a possibilidade de ver quando tenta selecionar texto.
+- A visualização oculta é representada por um retângulo com tamanho aleatório ao invés do texto. O tamanho é aleatório mas ele acompanha o padrão de tamanho das alternativas, ou seja, se as alternativas tiverem duas linhas de tamanho, haverá dois retângulos.
+- ao passar o mouse por cima de uma alternativa oculta
 
 
 
