@@ -4,12 +4,13 @@
 Definir padrões visuais, tipografia, cores, componentes e layout para manter consistência na plataforma Oficinando.
 
 ## Princípios de Design
-- Tipografia neutra e internacional com aspecto tátil.
+- Tipografia neutra e internacional.
+- Design com aspecto tátil.
 - Alinhamento bem organizado.
 - Efeitos neumorfistas como padrão principal.
 - Glassmorfismo quando necessário (contextos especiais).
-- Sem animações suaves longas; priorizar transições instantâneas.
-- Não minimalista; usar espaçamento generoso e contrastes legíveis.
+- Sem animações; priorizar transições instantâneas.
+- Não priorize o minimalismo.
 
 ## Tema de Cores
 

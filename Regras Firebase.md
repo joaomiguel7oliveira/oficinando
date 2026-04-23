@@ -19,41 +19,69 @@ Definir regras de seguranca e validacao para Firebase Authentication, Firestore 
 - Valores permitidos: aluno, professor, admin.
 - Elevacao para professor/admin so por conta autorizada previamente.
 
+## Controle de alteracao de role (ponto critico)
+- Cliente comum nunca altera role diretamente em usuarios/{uid}.
+- Alteracao de role ocorre apenas por admin ou backend (Cloud Functions).
+- Toda alteracao de role deve registrar auditoria obrigatoria com: actorUid, actorRole, targetUid, roleAnterior, roleNovo, motivo, timestamp.
+- Revogacao de role deve seguir o mesmo fluxo de auditoria da elevacao.
+- Falha de auditoria invalida a operacao: sem log, sem alteracao de role.
+
+## Definicao de escopo pedagogico (professor)
+Para reduzir ambiguidade, "sob seu escopo" significa:
+
+- Turmas em que professorResponsavelUid == auth.uid em turmas/{turmaId}; e
+- Avaliacoes em que professorUid == auth.uid; e
+- Tentativas de alunos vinculadas a essas turmas/avaliacoes.
+
+Regras complementares:
+- Professor nao pode ler ou editar dados fora das turmas/avaliacoes sob seu escopo.
+- Admin pode operar em qualquer escopo.
+- Operacoes sensiveis (ex.: remover desclassificacao) devem exigir justificativa e gerar log.
+
 ## Firestore - regras por dominio
 ### usuarios/{uid}
 - Leitura:
   - proprio usuario: permitido.
-  - professor/admin: permitido com escopo pedagogico.
+  - professor: permitido apenas para alunos das turmas sob seu escopo pedagogico.
+  - admin: permitido globalmente.
 - Escrita:
   - proprio usuario: permitido apenas em campos de perfil editaveis (nome, sobrenome, turma dentro de limites de negocio).
   - role, status sensivel e metadados de seguranca: apenas admin/backend.
+  - qualquer tentativa de alterar role por usuario nao-admin deve retornar permission-denied.
 
 ### avaliacoes/{avaliacaoId}
 - Leitura:
   - aluno: apenas avaliacoes liberadas para sua turma.
-  - professor/admin: avaliacoes sob seu escopo.
+  - professor: avaliacoes sob seu escopo pedagogico.
+  - admin: permitido globalmente.
 - Escrita:
-  - criar/editar/excluir: apenas professor/admin.
+  - professor: criar/editar/excluir apenas avaliacoes com professorUid == auth.uid.
+  - admin: permitido globalmente.
 
 ### tentativas/{tentativaId}
 - Leitura:
   - aluno: apenas as proprias tentativas.
-  - professor/admin: tentativas de alunos das turmas sob escopo.
+  - professor: tentativas de alunos das turmas/avaliacoes sob seu escopo pedagogico.
+  - admin: permitido globalmente.
 - Escrita:
   - aluno: criar tentativa propria e atualizar respostas enquanto Em andamento.
   - aluno nao pode alterar status final para Concluida/Desclassificada sem validacao de transicao.
-  - professor/admin: pode liberar nova tentativa, ajustar flags administrativas com log.
+  - professor: pode liberar nova tentativa e ajustar flags administrativas apenas dentro do proprio escopo, sempre com log.
+  - admin: permitido globalmente, sempre com log.
 
 ### respostas/{respostaId} (se separado)
 - Leitura:
-  - aluno dono da tentativa, professor/admin do escopo.
+  - aluno dono da tentativa.
+  - professor do escopo pedagogico da tentativa.
+  - admin global.
 - Escrita:
   - aluno dono durante tentativa Em andamento.
   - bloquear alteracao apos status final.
 
 ### eventos_monitoramento/{eventoId}
 - Leitura:
-  - professor/admin.
+  - professor apenas de eventos sob seu escopo pedagogico.
+  - admin global.
   - aluno pode ler apenas eventos proprios se necessario.
 - Escrita:
   - aluno autenticado escreve apenas eventos proprios (uid confere com auth.uid).
@@ -104,3 +132,4 @@ Definir regras de seguranca e validacao para Firebase Authentication, Firestore 
 ## Recomendacao operacional
 - Centralizar operacoes sensiveis em Cloud Functions quando houver regra complexa ou risco de corrida.
 - Usar transacoes para contadores e mudancas criticas de status/tentativa.
+- Criar endpoint administrativo unico para papel (ex.: setUserRole) com validacao de autorizacao + auditoria atomica.

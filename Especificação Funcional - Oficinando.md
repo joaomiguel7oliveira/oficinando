@@ -255,7 +255,8 @@ Importante: navegador não garante bloqueio absoluto de atalhos, devtools, zoom 
 - Ao detectar saída de foco/aba, iniciar contador de 10 segundos visível ao aluno.
 - Se o aluno não retornar no prazo, encerrar tentativa como Desclassificada.
 - Fechar navegador ou abandonar rota de prova encerra tentativa como Desclassificada.
-- Atalhos proibidos e clique direito podem ser registrados como sinal de risco, mas não devem ser anunciados como bloqueio técnico garantido (tais comandos devem ser bloqueados para aluno).
+- Atalhos proibidos, clique direito e tentativa de abrir ferramentas de inspeção devem ser tratados como eventos de risco monitorados.
+- Esses eventos não podem ser vendidos como bloqueio garantido no navegador; devem servir para auditoria e decisão pedagógica.
 
 ### Registro de eventos
 - Registrar início, conclusão, desclassificação, retorno ao foco e eventos críticos com timestamp.
@@ -400,6 +401,53 @@ Fluxo obrigatório durante prova.
 - Busca por tags, área de conhecimento ou dificuldade.
 - Importação e exportação de questões.
 - Duplicação de questões existentes para edição.
+
+## Critérios de aceite (fluxos críticos)
+
+### CA-01 - Desclassificação por perda de foco
+- Dado uma tentativa com status Em andamento
+- Quando o aluno permanecer fora de foco por mais de 10 segundos
+- Então a tentativa deve ser encerrada como Desclassificada e deve existir registro do evento de desclassificação com timestamp.
+
+### CA-02 - Retorno ao foco dentro do prazo
+- Dado uma tentativa com contador de perda de foco ativo
+- Quando o aluno retornar ao foco em até 10 segundos
+- Então a tentativa permanece Em andamento e o sistema registra evento de retorno ao foco.
+
+### CA-03 - Escopo pedagógico de professor
+- Dado um professor autenticado sem vínculo com determinada turma/avaliação
+- Quando ele tentar ler dados dessa turma/avaliação
+- Então a operação deve falhar com permission-denied.
+
+### CA-04 - Alteração de role protegida
+- Dado um usuário não-admin autenticado
+- Quando ele tentar alterar o campo role em usuarios/{uid}
+- Então a operação deve falhar com permission-denied.
+
+### CA-05 - Ação administrativa com auditoria obrigatória
+- Dado um admin ou professor autorizado no próprio escopo
+- Quando remover desclassificação ou liberar nova tentativa
+- Então a operação deve exigir motivo e registrar log com actorUid, actorRole, targetId, ação, motivo e timestamp.
+
+### CA-06 - Botão de resumo indisponível
+- Dado uma tentativa concluída com resumo não liberado
+- Quando o aluno abrir a tela de detalhes
+- Então o botão Ver resumo deve permanecer indisponível e permitir apenas atualização de status.
+
+### CA-07 - Falha de conexão durante prova
+- Dado uma tentativa em andamento
+- Quando o aluno ficar offline
+- Então o sistema deve exibir banner persistente de conexão, enfileirar eventos não críticos localmente e preservar respostas temporárias.
+
+### CA-08 - Reconexão e sincronização
+- Dado que existem eventos em fila local por período offline
+- Quando a conexão for restabelecida
+- Então os eventos devem ser sincronizados em ordem cronológica, com confirmação de persistência no backend.
+
+### CA-09 - Timeout de reconexão
+- Dado uma tentativa em andamento com timeout de reconexão configurado
+- Quando o timeout for excedido sem reconexão
+- Então a tentativa deve ser encerrada como Desclassificada por indisponibilidade de conexão, com motivo e tempo de indisponibilidade registrados.
 
 ## Pendências de implementação
 - Outros tipos de questão além de múltipla escolha
