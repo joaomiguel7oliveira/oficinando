@@ -1,38 +1,10 @@
-# Plataforma Educacional - Parte 1
-
-## Sumário
-- Objetivo
-- Restrições técnicas
-- Terminologia oficial
-- Escopo funcional
-- Regras globais de interface (consolidado)
-- Matriz de status e precedência
-- Autenticação e perfil
-- Primeiro login
-- Home
-- Header
-- Card de avaliação
-- Criador de avaliação
-- Editor de nanograma
-- Nanograma (minijogo)
-- Sistema de monitoramento e desclassificação (anti-cheat viável)
-- Usuário respondendo avaliação
-- Permanência obrigatória
-- Tela iniciar questionário
-- Tela ver detalhes
-- Tela resumo
-- Tela resultados do professor
-- Estados de carregamento e erro
-- Falha de conexão do aluno
-- Turmas
-- Configurações
-- Banco de questões
-- Pendências de implementação
+# Especificação Funcional - Produto e Fluxos
 
 ## Objetivo
 Criar a plataforma educacional web Oficinando, com autenticação Google (Firebase), aplicação de avaliações para alunos, painel de professor e controle de tentativas, status e resultados.
 
 ## Restrições técnicas
+- Frontend: Vue 3 com Vite.
 - Autenticação via Google Auth (Firebase Authentication).
 - Backend em Firebase (Firestore e Storage).
 - Projeto compatível com GitHub Pages.
@@ -50,13 +22,6 @@ Padronização de termos para evitar ambiguidade na implementação.
 - Resumo: tela com questão a questão, resposta correta, resposta marcada e explicação.
 - Detalhes: tela da tentativa com metadados (início, fim, duração, status e ações).
 
-## Escopo funcional
-### Em construção
-- Resultados (Professor)
-- Turmas (Professor)
-- Configurações (Professor)
-- Banco de questões (Professor)
-
 ## Regras globais de interface (consolidado)
 Estas regras substituem repetições em múltiplas telas.
 
@@ -65,30 +30,6 @@ Estas regras substituem repetições em múltiplas telas.
 - Toda ação assíncrona deve exibir estado de carregamento (spinner/skeleton) e mensagem de erro contextual em caso de falha.
 - Mensagens de erro devem ter ação de "Tentar novamente".
 - O sistema deve evitar animações suaves longas; priorizar transições instantâneas.
-
-## Matriz de status e precedência
-Regra única para resolver conflitos de estado da tentativa.
-
-### Status principais da tentativa
-- Em andamento
-- Concluída
-- Desclassificada
-
-### Status de disponibilidade da avaliação
-- Liberada
-- Bloqueada
-
-### Precedência (maior para menor)
-1. Desclassificada
-2. Concluída
-3. Em andamento
-
-### Regras de negócio
-- Se houver evento de desclassificação válido durante uma tentativa, o status final da tentativa será Desclassificada.
-- Bloqueada é um estado da avaliação (disponibilidade), não substitui o status histórico da tentativa.
-- Infração de permanência obrigatória gera flag de conduta, sem alterar automaticamente a nota e sem converter Concluída para Desclassificada.
-- Professor pode liberar nova tentativa sem apagar histórico anterior.
-- Professor pode remover marca de desclassificação manualmente apenas com justificativa registrada em log.
 
 ## Autenticação e perfil
 - Login e logout com Google.
@@ -182,7 +123,7 @@ Regra única para resolver conflitos de estado da tentativa.
 - Ordem fixa ou aleatória de alternativas (padrão aleatória)
 - Opções neutras e suaves de cores (aleatório por padrão)
 
-### Criar com IA
+### Criar com IA _(pós-v1)_
 - Integração com API Gemini via chave pessoal do professor.
 - Campos:
   - Prompt principal
@@ -198,6 +139,10 @@ Regra única para resolver conflitos de estado da tentativa.
 - Salvar configurações de geração junto da avaliação
 - Histórico de prompts e resultados para reuso
 - Aviso obrigatório: geração automática exige revisão humana
+- Política de privacidade obrigatória no fluxo:
+  - Não enviar dados pessoais de alunos em prompts.
+  - Exibir aviso antes da geração sobre uso de serviço externo.
+  - Registrar metadados de geração (sem conteúdo sensível) para auditoria.
 
 ### Configuração por questão
 - Enunciado (suporte Markdown)
@@ -234,33 +179,12 @@ Observação: futuramente suportar outros tipos de questão além de múltipla e
 - Definir nome
 - Lista de nanogramas criados com opção para editar ou excluir
 
-### Editor de nanograma - aluno
+### Editor de nanograma - aluno _(pós-v1)_
 - Caso o aluno gabarite a avaliação, ele tem uma chance de criar um nanograma para fazer parte da lista de nanogramas criados.
 - A opção de criar nanograma do aluno fica habilitada na área do game.
 - Por padrão, os alunos que não têm esse recurso podem ver o botão de criar nanograma mas com 0 de créditos.
 - O nanograma criado deve ser aprovado pelo professor antes de poder ser acessado pelos usuários.
 - Nanogramas criados por alunos informam a autoria.
-
-## Sistema de monitoramento e desclassificação (anti-cheat viável)
-Importante: navegador não garante bloqueio absoluto de atalhos, devtools, zoom ou troca de aba. O sistema deve monitorar eventos e aplicar desclassificação conforme regra.
-
-### Eventos monitorados
-- visibilitychange (aba oculta/minimizada)
-- blur/focus de janela
-- saída de tela de aplicação em modo de prova
-- tentativa de fechar/sair da avaliação
-- perda de fullscreen quando fullscreen for exigido
-
-### Regra de desclassificação
-- Ao detectar saída de foco/aba, iniciar contador de 10 segundos visível ao aluno.
-- Se o aluno não retornar no prazo, encerrar tentativa como Desclassificada.
-- Fechar navegador ou abandonar rota de prova encerra tentativa como Desclassificada.
-- Atalhos proibidos, clique direito e tentativa de abrir ferramentas de inspeção devem ser tratados como eventos de risco monitorados.
-- Esses eventos não podem ser vendidos como bloqueio garantido no navegador; devem servir para auditoria e decisão pedagógica.
-
-### Registro de eventos
-- Registrar início, conclusão, desclassificação, retorno ao foco e eventos críticos com timestamp.
-- Manter trilha para auditoria do professor.
 
 ## Usuário respondendo avaliação
 ### Layout e comportamento
@@ -282,16 +206,6 @@ Importante: navegador não garante bloqueio absoluto de atalhos, devtools, zoom 
 - Contador regressivo abaixo do enunciado.
 - Ao zerar, registrar resposta marcada (ou em branco).
 - Exibir aviso com transição automática para próxima questão em 10 segundos, com opção de avançar antes.
-
-## Permanência obrigatória
-- Impede saída do ambiente da plataforma após concluir avaliação, até liberação do professor.
-- Aluno pode acessar partes permitidas internamente (exemplo: minijogo).
-
-### Infração de permanência
-- Se o aluno sair do ambiente durante permanência obrigatória, registrar Infração de permanência.
-- A infração não altera nota automaticamente.
-- Professor visualiza a infração na tela de detalhes e resultados.
-- A infração não é uma informação importante então não precisa aparecer em destaque.
 
 ## Tela iniciar questionário (avaliação não realizada)
 - Título e descrição
@@ -351,7 +265,7 @@ Importante: navegador não garante bloqueio absoluto de atalhos, devtools, zoom 
 - Média, mediana e desvio padrão da turma.
 - Resumo de cada questão mostrando a porcentagem de acertos e erros, e as alternativas mais escolhidas.
 
-### Exportação de Dados
+### Exportação de Dados _(pós-v1)_
 - Botão para exportar resultados da turma/avaliação em formato CSV ou Excel.
 - Relatório individual em PDF para impressão ou arquivamento.
 
@@ -368,21 +282,6 @@ Padrão mínimo para todas as telas de dados.
 - Erro de escrita: toast/banner com motivo resumido + opção "Repetir ação".
 - Erro de permissão: mensagem sem stack técnico para usuário final, com orientação de contato ao professor/admin.
 
-## Falha de conexão do aluno
-Fluxo obrigatório durante prova.
-
-- Detectar offline com eventos do navegador (online/offline) e timeout de requisições.
-- Ao detectar queda:
-  - pausar envio de eventos não críticos em fila local;
-  - exibir banner persistente "Sem conexão. Tentando reconectar.";
-  - manter resposta local temporária (memória/sessão) para evitar perda imediata.
-- Ao reconectar:
-  - sincronizar fila em ordem cronológica;
-  - confirmar persistência no backend;
-  - remover banner de offline.
-- Se a reconexão não ocorrer no tempo limite de segurança da prova (definir em configuração), encerrar tentativa como Desclassificada por indisponibilidade de conexão, registrando motivo e tempo de indisponibilidade.
-- Toda desclassificação por conexão deve ficar explícita para revisão do professor, com possibilidade de liberar nova tentativa.
-
 ## Turmas (Professor)
 - Criar, editar e excluir turmas.
 - Visualizar lista de alunos por turma.
@@ -396,58 +295,11 @@ Fluxo obrigatório durante prova.
 - Ativar/desativar banner de manutenção.
 - Personalizar temas e identidade visual básica da plataforma.
 
-## Banco de questões (Professor)
+## Banco de questões (Professor) _(pós-v1)_
 - Repositório central de questões para reaproveitamento em diferentes avaliações.
 - Busca por tags, área de conhecimento ou dificuldade.
 - Importação e exportação de questões.
 - Duplicação de questões existentes para edição.
 
-## Critérios de aceite (fluxos críticos)
-
-### CA-01 - Desclassificação por perda de foco
-- Dado uma tentativa com status Em andamento
-- Quando o aluno permanecer fora de foco por mais de 10 segundos
-- Então a tentativa deve ser encerrada como Desclassificada e deve existir registro do evento de desclassificação com timestamp.
-
-### CA-02 - Retorno ao foco dentro do prazo
-- Dado uma tentativa com contador de perda de foco ativo
-- Quando o aluno retornar ao foco em até 10 segundos
-- Então a tentativa permanece Em andamento e o sistema registra evento de retorno ao foco.
-
-### CA-03 - Escopo pedagógico de professor
-- Dado um professor autenticado sem vínculo com determinada turma/avaliação
-- Quando ele tentar ler dados dessa turma/avaliação
-- Então a operação deve falhar com permission-denied.
-
-### CA-04 - Alteração de role protegida
-- Dado um usuário não-admin autenticado
-- Quando ele tentar alterar o campo role em usuarios/{uid}
-- Então a operação deve falhar com permission-denied.
-
-### CA-05 - Ação administrativa com auditoria obrigatória
-- Dado um admin ou professor autorizado no próprio escopo
-- Quando remover desclassificação ou liberar nova tentativa
-- Então a operação deve exigir motivo e registrar log com actorUid, actorRole, targetId, ação, motivo e timestamp.
-
-### CA-06 - Botão de resumo indisponível
-- Dado uma tentativa concluída com resumo não liberado
-- Quando o aluno abrir a tela de detalhes
-- Então o botão Ver resumo deve permanecer indisponível e permitir apenas atualização de status.
-
-### CA-07 - Falha de conexão durante prova
-- Dado uma tentativa em andamento
-- Quando o aluno ficar offline
-- Então o sistema deve exibir banner persistente de conexão, enfileirar eventos não críticos localmente e preservar respostas temporárias.
-
-### CA-08 - Reconexão e sincronização
-- Dado que existem eventos em fila local por período offline
-- Quando a conexão for restabelecida
-- Então os eventos devem ser sincronizados em ordem cronológica, com confirmação de persistência no backend.
-
-### CA-09 - Timeout de reconexão
-- Dado uma tentativa em andamento com timeout de reconexão configurado
-- Quando o timeout for excedido sem reconexão
-- Então a tentativa deve ser encerrada como Desclassificada por indisponibilidade de conexão, com motivo e tempo de indisponibilidade registrados.
-
 ## Pendências de implementação
-- Outros tipos de questão além de múltipla escolha
+- Outros tipos de questão além de múltipla escolha.

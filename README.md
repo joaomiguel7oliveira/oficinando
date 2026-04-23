@@ -1,112 +1,31 @@
 # Oficinando
+Plataforma educacional web com autenticacao Google (Firebase), avaliacoes, painel de professor, controle de tentativas e auditoria.
 
-Plataforma educacional web com autenticacao Google (Firebase), aplicacao de avaliacoes, painel de professor, controle de tentativas e trilha de auditoria.
+## Stack
+- Frontend: Vue 3 + Vite
+- Backend: Firebase (Firestore, Storage, Authentication, Cloud Functions)
 
-## Status atual
-- Fase atual: especificacao e arquitetura.
-- Implementado no repositorio: documentacao funcional, design system, regras de seguranca e esquema de dados Firebase.
-- Nao implementado ainda: codigo da aplicacao (frontend/backend), regras reais de deploy e testes automatizados.
+## Documentacao do projeto
 
-## Documentos principais
-- Especificacao funcional: `Especificação Funcional - Oficinando.md`
-- Design system: `Design System.md`
-- Regras Firebase: `Regras Firebase.md`
-- Esquema Firebase: `Esquema Firebase.md`
+- [Especificação Funcional - Oficinando.md](Especificação%20Funcional%20-%20Oficinando.md): índice central da especificação funcional.
+- [Especificação Funcional - Produto e Fluxos.md](Especificação%20Funcional%20-%20Produto%20e%20Fluxos.md): regras de produto, telas e fluxos funcionais.
+- [Especificação Funcional - Segurança e Operação.md](Especificação%20Funcional%20-%20Segurança%20e%20Operação.md): status, anti-cheat, conexão, Cloud Functions e critérios críticos.
+- [Especificação Funcional - Entrega v1.md](Especificação%20Funcional%20-%20Entrega%20v1.md): plano MVP, backlog por sprint, testes e NFRs.
+- [Critérios de Aceite - Oficinando.md](Critérios%20de%20Aceite%20-%20Oficinando.md): critérios de homologação e gate de release.
+- [Matriz de Homologação v1 - Oficinando.md](Matriz%20de%20Homologação%20v1%20-%20Oficinando.md): checklist executável de validação dos CAs.
+- [Esquema Firebase.md](Esquema%20Firebase.md): modelagem de dados (Firestore/Storage), consultas e estratégia de consistência.
+- [Regras Firebase.md](Regras%20Firebase.md): diretrizes de segurança, escopo pedagógico e auditoria.
+- [Design System.md](Design%20System.md): padrões visuais, componentes, layout e acessibilidade.
 
-## Como usar este repositorio (onboarding)
-1. Leia `Especificação Funcional - Oficinando.md` para entender fluxo de produto e regras de negocio.
-2. Leia `Regras Firebase.md` para regras de seguranca, escopo e auditoria.
-3. Leia `Esquema Firebase.md` para modelagem de colecoes e paths de storage.
-4. Leia `Design System.md` para diretrizes visuais e comportamento de interface.
-5. Use os CAs (criterios de aceite) da especificacao como base de implementacao e teste.
+## Ordem recomendada de execução
 
-## Estrutura esperada quando iniciar implementacao
-```
-oficinando/
-	app/                      # frontend web
-	functions/                # Cloud Functions (operacoes sensiveis)
-	firebase/
-		firestore.rules
-		storage.rules
-		firestore.indexes.json
-	docs/                     # opcional: mover documentacao para pasta dedicada
-	README.md
-```
+1. Fechar Sprint 1 do MVP na especificação funcional.
+2. Implementar coleções e regras mínimas de Firestore/Storage.
+3. Entregar fluxo de tentativa completo (Sprint 2).
+4. Consolidar painel do professor e operações sensíveis via Cloud Functions (Sprint 3).
 
-## Backlog tecnico imediato
-- Converter `Regras Firebase.md` em `firestore.rules` e `storage.rules`.
-- Converter indices planejados em `firestore.indexes.json`.
-- Criar endpoint administrativo unico para papel (ex.: setUserRole) com auditoria atomica.
-- Implementar fluxo de tentativa com transicoes de status seguras.
-- Implementar fila offline/reconexao no cliente para fluxo de prova.
+## Definicao de pronto do v1
 
-## Roadmap de entrega por marcos
-
-### Marco 1 - Fundacao e autenticacao
-Objetivo: colocar app no ar com login, perfil e estrutura basica de navegacao.
-
-Escopo:
-- Login/logout Google.
-- Cadastro de perfil no primeiro acesso (nome, sobrenome, turma).
-- Home aluno e professor com navegacao base.
-- Setup inicial Firebase (Auth + Firestore + Storage).
-
-Concluido quando:
-- Usuario entra com Google e acessa sua home correta por papel.
-- Perfil eh criado e respeita regras de atualizacao diaria.
-
-### Marco 2 - Avaliacao principal (MVP)
-Objetivo: publicar e responder avaliacao de ponta a ponta.
-
-Escopo:
-- Criador de avaliacao (sem IA avancada no inicio).
-- Aplicacao de prova com tentativas, respostas e finalizacao.
-- Tela de detalhes e resumo basico.
-- Regras de status e precedencia (Em andamento/Concluida/Desclassificada).
-
-Concluido quando:
-- Professor cria avaliacao e aluno completa tentativa com resultado persistido.
-- Fluxos CA-01 a CA-06 validados.
-
-### Marco 3 - Seguranca, escopo e auditoria
-Objetivo: garantir governanca de dados e operacoes sensiveis.
-
-Escopo:
-- Regras completas de Firestore/Storage por escopo pedagogico.
-- Endpoint administrativo de role e acoes sensiveis com log obrigatorio.
-- Painel inicial de resultados com filtro por turma/avaliacao.
-- Logs de monitoramento visiveis para professor conforme escopo.
-
-Concluido quando:
-- Professor so acessa dados do proprio escopo.
-- Alteracao de role fora de admin falha com permission-denied.
-- Logs administrativos sao gerados em 100% das acoes sensiveis.
-
-### Marco 4 - Robustez e recursos avancados
-Objetivo: elevar confiabilidade e diferenciais do produto.
-
-Escopo:
-- Fila offline/reconexao com sincronizacao cronologica.
-- Exportacao de dados (CSV/Excel/PDF).
-- Banco de questoes.
-- Nanograma e fluxo de aprovacao de nanograma de aluno.
-- Criacao com IA (Gemini) com revisao humana obrigatoria.
-
-Concluido quando:
-- Fluxos CA-07 a CA-09 validados.
-- Recursos avancados funcionando sem quebrar regras de seguranca e custo.
-
-## Criterio de prioridade
-Sempre priorizar:
-1. Seguranca e autorizacao.
-2. Fluxo principal de avaliacao.
-3. Confiabilidade (offline/reconexao).
-4. Recursos diferenciais (nanograma e IA).
-
-## Definicao de pronto (DoD)
-Uma entrega so e considerada pronta quando:
-- Cumpre criterios de aceite aplicaveis.
-- Respeita regras de escopo e seguranca.
-- Tem log/auditoria nas acoes administrativas.
-- Nao aumenta custo de leitura/escrita sem justificativa.
-- Esta alinhada ao `Design System.md`.
+- Fluxo ponta a ponta funcionando: criar avaliacao, responder, finalizar, consultar resultados.
+- Criterios CA-01 a CA-09 aprovados em homologacao.
+- Regras de seguranca e logs obrigatorios ativos para operacoes criticas.

@@ -9,7 +9,7 @@ Definir padrões visuais, tipografia, cores, componentes e layout para manter co
 - Alinhamento bem organizado.
 - Efeitos neumorfistas como padrão principal.
 - Glassmorfismo quando necessário (contextos especiais).
-- Sem animações; priorizar transições instantâneas.
+- Animações curtas permitidas apenas para feedback funcional (80ms–120ms); sem efeitos decorativos ou sequências longas.
 - Não priorize o minimalismo.
 
 ## Tema de Cores
@@ -323,15 +323,15 @@ Sistema de escala baseado em 4px.
 - Fonte recomendada: Feather Icons ou Material Icons
 
 ## Transições e Animações
-- Regra geral: não usar transições animadas.
-- Apenas transições obrigatórias de estado/feedback.
-- Toda transição obrigatória deve ser instantânea (0ms), sem easing.
-- Evitar: animações de scroll, fade, escalonamento e efeitos decorativos.
+- Regra geral: evitar animações decorativas e priorizar respostas rápidas.
+- Permitido usar microtransições curtas apenas para feedback funcional.
+- Duração recomendada para microtransições: 80ms a 120ms, easing linear.
+- Evitar: animações de scroll, efeitos chamativos e sequências longas.
 
 ### Casos permitidos
-- Mudança de estado de botão (normal, hover, ativo, desabilitado, carregando): instantânea.
-- Exibição/ocultação de mensagens de erro, sucesso e alerta: instantânea.
-- Abertura/fechamento de modal apenas quando necessário para usabilidade: instantânea.
+- Mudança de estado de botão (normal, hover, ativo, desabilitado, carregando): instantânea ou ate 120ms.
+- Exibição/ocultação de mensagens de erro, sucesso e alerta: instantânea ou ate 120ms.
+- Abertura/fechamento de modal apenas quando necessário para usabilidade: ate 120ms.
 
 ## Modo Escuro (futuro)
 Inverter tema com cuidado:

@@ -3,6 +3,13 @@
 ## Objetivo
 Definir regras de seguranca e validacao para Firebase Authentication, Firestore e Storage no projeto Oficinando.
 
+## Sintese rapida
+- Quem pode acessar: aluno (proprio dado), professor (somente escopo pedagogico), admin (global).
+- Papel (role): fonte oficial em usuarios/{uid}.role.
+- Alteracao de role: somente admin/backend, com log obrigatorio.
+- Modelo de respostas adotado: tentativas/{tentativaId}/respostas/{questaoId}.
+- Regra de ouro: sem permissao explicita, acesso negado.
+
 ## Principios
 - Regra de menor privilegio: cada perfil acessa apenas o necessario.
 - Toda escrita sensivel deve validar papel e ownership.
@@ -12,7 +19,7 @@ Definir regras de seguranca e validacao para Firebase Authentication, Firestore 
 ## Authentication
 - Provedor unico: Google.
 - Usuario autenticado obrigatorio para qualquer leitura/escrita de dados privados.
-- Claims customizadas sao opcionais; o papel pode ser lido do documento de usuario.
+- Claims customizadas sao opcionais (cache/performance), mas a fonte oficial de papel eh usuarios/{uid}.role.
 
 ## Estrategia de papel (role)
 - Fonte de verdade: colecao usuarios/{uid}.role.
@@ -69,7 +76,7 @@ Regras complementares:
   - professor: pode liberar nova tentativa e ajustar flags administrativas apenas dentro do proprio escopo, sempre com log.
   - admin: permitido globalmente, sempre com log.
 
-### respostas/{respostaId} (se separado)
+### tentativas/{tentativaId}/respostas/{questaoId}
 - Leitura:
   - aluno dono da tentativa.
   - professor do escopo pedagogico da tentativa.
@@ -95,7 +102,7 @@ Regras complementares:
 
 ## Storage
 ### Avaliacoes e midias
-- Upload permitido apenas para professor/admin em paths da propria avaliacao.
+- Upload permitido para professor apenas em paths das proprias avaliacoes; admin com acesso global.
 - Tipos permitidos: imagens (exemplo: png, jpg, webp).
 - Limite de tamanho por arquivo (exemplo: 5 MB).
 - Bloquear sobrescrita indevida fora do escopo.

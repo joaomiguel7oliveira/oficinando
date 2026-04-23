@@ -3,6 +3,12 @@
 ## Objetivo
 Definir organizacao de colecoes/documentos no Firestore e padroes de paths no Storage para a plataforma Oficinando.
 
+## Decisoes de modelagem (resumo)
+- Papel (role) oficial em usuarios/{uid}.role.
+- Respostas armazenadas em subcolecao por tentativa: tentativas/{tentativaId}/respostas/{questaoId}.
+- Eventos de monitoramento como append-only para auditoria.
+- Operacoes sensiveis centralizadas preferencialmente em Cloud Functions.
+
 ## Convencoes gerais
 - IDs de documento: auto-ID do Firestore, exceto quando uid for chave natural (usuarios/{uid}).
 - Campos de data: usar Timestamp do servidor.
