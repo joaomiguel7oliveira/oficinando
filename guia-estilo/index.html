@@ -1,0 +1,283 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia de Estilo Essencial | Oficinando</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body data-theme="solarizado">
+    <header class="topbar">
+        <div>
+            <p class="eyebrow">Oficinando UI</p>
+            <h1>Guia de Estilo Essencial</h1>
+        </div>
+    </header>
+
+    <main class="board">
+        <section class="panel" id="fundacoes">
+            <div class="panel-head">
+                <h2>Fundações</h2>
+                <p>Base visual: cores, tipografia, espaçamento, raio e superfície.</p>
+            </div>
+
+            <div class="grid-3">
+                <article class="card">
+                    <p class="label">Paleta principal</p>
+                    <div class="swatches">
+                        <span class="swatch swatch-bg">Fundo</span>
+                        <span class="swatch swatch-surface">Superfície</span>
+                        <span class="swatch swatch-primary">Primária</span>
+                        <span class="swatch swatch-text">Texto</span>
+                        <span class="swatch swatch-muted">Texto secundário</span>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <p class="label">Tipografia</p>
+                    <p class="type-h1">H1: Título da seção</p>
+                    <p class="type-h2">H2: Subtítulo de bloco</p>
+                    <p class="type-h3">H3: Título de cartão</p>
+                    <p class="type-body">Body: texto padrão para conteúdo e instruções.</p>
+                    <p class="type-body-strong">Body Strong: destaque de informação importante.</p>
+                    <p class="type-body-secondary">Body Secondary: descrição de apoio com menor prioridade.</p>
+                    <p class="type-caption">Caption: texto de apoio e contexto.</p>
+                </article>
+
+                <article class="card">
+                    <p class="label">Escala de espaçamentos</p>
+                    <div class="space-scale" aria-label="Escala de espaçamentos">
+                        <div class="space-item"><span>4px</span><i class="space-bar s4"></i></div>
+                        <div class="space-item"><span>8px</span><i class="space-bar s8"></i></div>
+                        <div class="space-item"><span>12px</span><i class="space-bar s12"></i></div>
+                        <div class="space-item"><span>16px</span><i class="space-bar s16"></i></div>
+                        <div class="space-item"><span>24px</span><i class="space-bar s24"></i></div>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <p class="label">Escala de raios</p>
+                    <div class="radius-scale" aria-label="Escala de raios">
+                        <span class="radius-chip r0">0</span>
+                        <span class="radius-chip r6">6</span>
+                        <span class="radius-chip r10">10</span>
+                        <span class="radius-chip r14">14</span>
+                        <span class="radius-chip r24">24</span>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <p class="label">Escala de sombras</p>
+                    <div class="elevation-grid" aria-label="Escala de sombras">
+                        <div class="elevation flat">Flat</div>
+                        <div class="elevation hover">Hover</div>
+                        <div class="elevation modal">Modal</div>
+                        <div class="elevation popover">Popover</div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="panel" id="controles">
+            <div class="panel-head">
+                <h2>Controles</h2>
+                <p>Elementos essenciais de ação e entrada.</p>
+            </div>
+
+            <div class="grid-3">
+                <article class="card">
+                    <p class="label">Botões</p>
+                    <div class="stack-sm">
+                        <button class="btn btn-primary" type="button">Primário</button>
+                        <button class="btn btn-secondary" type="button">Secundário</button>
+                        <button class="btn btn-primary" type="button" disabled>Desabilitado</button>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <p class="label">Campos</p>
+                    <label class="input-label" for="email">E-mail</label>
+                    <input id="email" type="email" placeholder="aluno@escola.com.br">
+                    <small class="hint">Use um e-mail válido para recuperação.</small>
+
+                    <label class="input-label mt" for="perfil">Perfil</label>
+                    <select id="perfil" aria-label="Perfil">
+                        <option>Aluno</option>
+                        <option>Professor</option>
+                    </select>
+                </article>
+
+                <article class="card">
+                    <p class="label">Seleção</p>
+
+                    <label class="choice">
+                        <input type="checkbox" checked>
+                        <span>Liberar resumo ao concluir</span>
+                    </label>
+
+                    <label class="choice">
+                        <input type="radio" name="modo" checked>
+                        <span>Modo padrão</span>
+                    </label>
+
+                    <div class="switch-field">
+                        <p class="label" style="margin-bottom:6px">Interruptor</p>
+                        <label class="switch-pill" aria-label="Interruptor">
+                            <input id="switchDemo" type="checkbox" checked>
+                            <span class="switch-track">
+                                <span class="sw-label sw-on">ON</span>
+                                <span class="switch-thumb"></span>
+                                <span class="sw-label sw-off">OFF</span>
+                            </span>
+                        </label>
+                    </div>
+
+                    <div class="slider-row">
+                        <label class="input-label" for="pontuacao">Pontuação mínima</label>
+                        <div class="slider-outer">
+                            <div class="slider-tooltip" id="sliderTooltip">70%</div>
+                            <input id="pontuacao" type="range" min="0" max="100" value="70">
+                            <div class="slider-ticks" aria-hidden="true">
+                                <span>0</span><span>25</span><span>50</span><span>75</span><span>100</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="panel" id="estados-interativos">
+            <div class="panel-head">
+                <h2>Estados Interativos</h2>
+                <p>Referência visual para hover, focus, active e disabled.</p>
+            </div>
+
+            <div class="state-grid">
+                <article class="state-card">
+                    <p class="label">Hover</p>
+                    <button class="btn btn-primary is-hover" type="button">Botão em hover</button>
+                </article>
+
+                <article class="state-card">
+                    <p class="label">Focus</p>
+                    <button class="btn btn-secondary is-focus" type="button">Botão com foco</button>
+                </article>
+
+                <article class="state-card">
+                    <p class="label">Active</p>
+                    <button class="btn btn-primary is-active" type="button">Botão ativo</button>
+                </article>
+
+                <article class="state-card">
+                    <p class="label">Disabled</p>
+                    <button class="btn btn-primary" type="button" disabled>Botão desabilitado</button>
+                </article>
+
+                <article class="state-card">
+                    <p class="label">Reação ao clique</p>
+                    <button id="clickDemoBtn" class="btn btn-secondary" type="button">Pressione e segure</button>
+                    <p id="clickDemoText" class="click-feedback">Nenhuma pressão registrada.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="panel" id="expansao-guia">
+            <div class="panel-head">
+                <h2>Expansões Recomendadas</h2>
+                <p>Base para evoluir o design system com consistência de produto.</p>
+            </div>
+
+            <div class="grid-3">
+                <article class="card">
+                    <p class="label">Estados semânticos</p>
+                    <div class="semantic-grid" aria-label="Estados semânticos">
+                        <span class="semantic-chip semantic-success">Sucesso</span>
+                        <span class="semantic-chip semantic-warning">Aviso</span>
+                        <span class="semantic-chip semantic-error">Erro</span>
+                        <span class="semantic-chip semantic-info">Info</span>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <p class="label">Escala de opacidade</p>
+                    <div class="opacity-grid" aria-label="Escala de opacidade">
+                        <span class="opacity-chip">8%</span>
+                        <span class="opacity-chip">16%</span>
+                        <span class="opacity-chip">24%</span>
+                        <span class="opacity-chip">40%</span>
+                        <span class="opacity-chip">60%</span>
+                        <span class="opacity-chip">80%</span>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <p class="label">Layout e breakpoints</p>
+                    <div class="token-list" aria-label="Layout e breakpoints">
+                        <div class="token-row"><b>Container</b><span>1100px</span></div>
+                        <div class="token-row"><b>Grid</b><span>12 colunas</span></div>
+                        <div class="token-row"><b>Gutter</b><span>16px</span></div>
+                        <div class="token-row"><b>Mobile</b><span>até 780px</span></div>
+                        <div class="token-row"><b>Desktop</b><span>acima de 780px</span></div>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <p class="label">Motion tokens</p>
+                    <div class="token-list" aria-label="Motion tokens">
+                        <div class="token-row"><b>Rápida</b><span>120ms</span></div>
+                        <div class="token-row"><b>Padrão</b><span>180ms</span></div>
+                        <div class="token-row"><b>Lenta</b><span>240ms</span></div>
+                        <div class="token-row"><b>Curva</b><span>ease-out</span></div>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <p class="label">Acessibilidade</p>
+                    <div class="token-list" aria-label="Checklist de acessibilidade">
+                        <div class="token-row"><b>Contraste</b><span>AA mínimo</span></div>
+                        <div class="token-row"><b>Toque</b><span>alvo 44px+</span></div>
+                        <div class="token-row"><b>Foco</b><span>sempre visível</span></div>
+                        <div class="token-row"><b>Labels</b><span>sem placeholder-only</span></div>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <p class="label">Componentes faltantes</p>
+                    <div class="component-tags" aria-label="Componentes prioritários">
+                        <span class="tag">Tabs</span>
+                        <span class="tag">Toast</span>
+                        <span class="tag">Modal</span>
+                        <span class="tag">Dropdown</span>
+                        <span class="tag">Paginação</span>
+                        <span class="tag">Tabela</span>
+                    </div>
+                </article>
+
+                <article class="card do-dont">
+                    <p class="label">Do e Don&apos;t</p>
+                    <div class="do-dont-grid">
+                        <div class="do-col">
+                            <p class="mini-title">Do</p>
+                            <p class="mini-line">Use secundário apenas para apoio.</p>
+                            <p class="mini-line">Mantenha 1 destaque primário por bloco.</p>
+                        </div>
+                        <div class="dont-col">
+                            <p class="mini-title">Don&apos;t</p>
+                            <p class="mini-line">Não competir cores de texto.</p>
+                            <p class="mini-line">Não remover foco visível.</p>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
