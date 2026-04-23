@@ -1,7 +1,5 @@
 ﻿const slider = document.getElementById("pontuacao");
 const sliderTooltip = document.getElementById("sliderTooltip");
-const clickDemoBtn = document.getElementById("clickDemoBtn");
-const clickDemoText = document.getElementById("clickDemoText");
 
 if (slider && sliderTooltip) {
     const syncSlider = () => {
@@ -24,25 +22,3 @@ if (slider && sliderTooltip) {
     requestAnimationFrame(syncSlider);
 }
 
-if (clickDemoBtn && clickDemoText) {
-    let clicks = 0;
-
-    clickDemoBtn.addEventListener("pointerdown", () => {
-        clickDemoBtn.classList.add("is-pressing");
-        clickDemoText.textContent = "Pressionando...";
-        clickDemoText.classList.add("is-reacted");
-    });
-
-    const releasePress = () => {
-        clickDemoBtn.classList.remove("is-pressing");
-    };
-
-    clickDemoBtn.addEventListener("pointerup", () => {
-        clicks += 1;
-        clickDemoText.textContent = `Pressões registradas: ${clicks}`;
-        releasePress();
-    });
-
-    clickDemoBtn.addEventListener("pointercancel", releasePress);
-    clickDemoBtn.addEventListener("pointerleave", releasePress);
-}

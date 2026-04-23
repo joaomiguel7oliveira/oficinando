@@ -4,10 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guia de Estilo Essencial | Oficinando</title>
+    <title>Guia de Estilo Tatil | Oficinando</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -15,7 +16,7 @@
     <header class="topbar">
         <div>
             <p class="eyebrow">Oficinando UI</p>
-            <h1>Guia de Estilo Essencial</h1>
+            <h1>Guia de Estilo Tatil</h1>
         </div>
     </header>
 
@@ -29,34 +30,93 @@
             <div class="grid-3">
                 <article class="card">
                     <p class="label">Paleta principal</p>
-                    <div class="swatches">
-                        <span class="swatch swatch-bg">Fundo</span>
-                        <span class="swatch swatch-surface">Superfície</span>
-                        <span class="swatch swatch-primary">Primária</span>
-                        <span class="swatch swatch-text">Texto</span>
-                        <span class="swatch swatch-muted">Texto secundário</span>
+                    <div class="palette-list" aria-label="Paleta principal por papel">
+                        <div class="palette-item palette-bg">
+                            <div class="palette-token">
+                                <b>Background</b>
+                                <span>Base global da interface</span>
+                            </div>
+                            <code>#f3ede1</code>
+                        </div>
+
+                        <div class="palette-item palette-primary">
+                            <div class="palette-token">
+                                <b>Primary</b>
+                                <span>Ações principais e destaque</span>
+                            </div>
+                            <code>#0b6f7f</code>
+                        </div>
+
+                        <div class="palette-item palette-text">
+                            <div class="palette-token">
+                                <b>Texto principal</b>
+                                <span>Conteúdo principal em superfícies claras</span>
+                            </div>
+                            <code>#15323a</code>
+                        </div>
+
+                        <div class="palette-item palette-muted">
+                            <div class="palette-token">
+                                <b>Texto de apoio</b>
+                                <span>Metadados, descrições curtas e informação secundária</span>
+                            </div>
+                            <code>#6f6858</code>
+                        </div>
+
+                        <div class="palette-item palette-border">
+                            <div class="palette-token">
+                                <b>Borda e divisor</b>
+                                <span>Contorno de campos, separadores e limites estruturais</span>
+                            </div>
+                            <code>#d8caac</code>
+                        </div>
                     </div>
                 </article>
 
                 <article class="card">
-                    <p class="label">Tipografia</p>
-                    <p class="type-h1">H1: Título da seção</p>
-                    <p class="type-h2">H2: Subtítulo de bloco</p>
-                    <p class="type-h3">H3: Título de cartão</p>
-                    <p class="type-body">Body: texto padrão para conteúdo e instruções.</p>
-                    <p class="type-body-strong">Body Strong: destaque de informação importante.</p>
-                    <p class="type-body-secondary">Body Secondary: descrição de apoio com menor prioridade.</p>
-                    <p class="type-caption">Caption: texto de apoio e contexto.</p>
+                    <p class="label">Superfícies por nível</p>
+                    <div class="surface-scale" aria-label="Escala de superfícies">
+                        <div class="surface-item surface-item-1">
+                            <b>surface-1</b>
+                            <span>Plano base de leitura</span>
+                        </div>
+                        <div class="surface-item surface-item-2">
+                            <b>surface-2</b>
+                            <span>Blocos e áreas padrão</span>
+                        </div>
+                        <div class="surface-item surface-item-3">
+                            <b>surface-3</b>
+                            <span>Destaques e caixas elevadas</span>
+                        </div>
+                        <div class="surface-item surface-item-panel">
+                            <b>surface-grad</b>
+                            <span>Painéis principais do guia</span>
+                        </div>
+                    </div>
+                    <div class="surface-stack" aria-label="Composição visual das superfícies">
+                        <div class="surface-layer surface-layer-1">surface-1</div>
+                        <div class="surface-layer surface-layer-2">surface-2</div>
+                        <div class="surface-layer surface-layer-3">surface-3</div>
+                    </div>
                 </article>
 
-                <article class="card">
-                    <p class="label">Escala de espaçamentos</p>
-                    <div class="space-scale" aria-label="Escala de espaçamentos">
-                        <div class="space-item"><span>4px</span><i class="space-bar s4"></i></div>
-                        <div class="space-item"><span>8px</span><i class="space-bar s8"></i></div>
-                        <div class="space-item"><span>12px</span><i class="space-bar s12"></i></div>
-                        <div class="space-item"><span>16px</span><i class="space-bar s16"></i></div>
-                        <div class="space-item"><span>24px</span><i class="space-bar s24"></i></div>
+                <article class="card card-typography">
+                    <p class="label">Tipografia (UI e Conteúdo)</p>
+                    <div class="type-grid" aria-label="Escalas tipográficas">
+                        <div class="type-block">
+                            <p class="type-block-title">UI</p>
+                            <p class="type-sample type-ui-xl">UI XL 24/1.2 700</p>
+                            <p class="type-sample type-ui-lg">UI LG 20/1.2 600</p>
+                            <p class="type-sample type-ui-md">UI MD 16/1.3 600</p>
+                            <p class="type-sample type-caption">Label/Caption 12</p>
+                        </div>
+                        <div class="type-block">
+                            <p class="type-block-title">Conteúdo</p>
+                            <p class="type-sample type-content-lg">Body LG: leitura de explicações longas.</p>
+                            <p class="type-sample type-content-md">Body MD: texto padrão da interface.</p>
+                            <p class="type-sample type-content-sm">Body SM: notas, apoio e descrições.</p>
+                            <p class="type-sample type-body-secondary">Secondary: baixa prioridade visual.</p>
+                        </div>
                     </div>
                 </article>
 
@@ -77,7 +137,6 @@
                         <div class="elevation flat">Flat</div>
                         <div class="elevation hover">Hover</div>
                         <div class="elevation modal">Modal</div>
-                        <div class="elevation popover">Popover</div>
                     </div>
                 </article>
             </div>
@@ -101,15 +160,19 @@
 
                 <article class="card">
                     <p class="label">Campos</p>
-                    <label class="input-label" for="email">E-mail</label>
-                    <input id="email" type="email" placeholder="aluno@escola.com.br">
-                    <small class="hint">Use um e-mail válido para recuperação.</small>
+                    <div class="field-group">
+                        <label class="input-label" for="email">E-mail</label>
+                        <input id="email" type="email" placeholder="aluno@escola.com.br">
+                        <small class="hint">Use um e-mail válido para recuperação.</small>
+                    </div>
 
-                    <label class="input-label mt" for="perfil">Perfil</label>
-                    <select id="perfil" aria-label="Perfil">
-                        <option>Aluno</option>
-                        <option>Professor</option>
-                    </select>
+                    <div class="field-group">
+                        <label class="input-label" for="perfil">Perfil</label>
+                        <select id="perfil" aria-label="Perfil">
+                            <option>Aluno</option>
+                            <option>Professor</option>
+                        </select>
+                    </div>
                 </article>
 
                 <article class="card">
@@ -126,7 +189,7 @@
                     </label>
 
                     <div class="switch-field">
-                        <p class="label" style="margin-bottom:6px">Interruptor</p>
+                        <p class="label label-tight">Interruptor</p>
                         <label class="switch-pill" aria-label="Interruptor">
                             <input id="switchDemo" type="checkbox" checked>
                             <span class="switch-track">
@@ -151,130 +214,6 @@
             </div>
         </section>
 
-        <section class="panel" id="estados-interativos">
-            <div class="panel-head">
-                <h2>Estados Interativos</h2>
-                <p>Referência visual para hover, focus, active e disabled.</p>
-            </div>
-
-            <div class="state-grid">
-                <article class="state-card">
-                    <p class="label">Hover</p>
-                    <button class="btn btn-primary is-hover" type="button">Botão em hover</button>
-                </article>
-
-                <article class="state-card">
-                    <p class="label">Focus</p>
-                    <button class="btn btn-secondary is-focus" type="button">Botão com foco</button>
-                </article>
-
-                <article class="state-card">
-                    <p class="label">Active</p>
-                    <button class="btn btn-primary is-active" type="button">Botão ativo</button>
-                </article>
-
-                <article class="state-card">
-                    <p class="label">Disabled</p>
-                    <button class="btn btn-primary" type="button" disabled>Botão desabilitado</button>
-                </article>
-
-                <article class="state-card">
-                    <p class="label">Reação ao clique</p>
-                    <button id="clickDemoBtn" class="btn btn-secondary" type="button">Pressione e segure</button>
-                    <p id="clickDemoText" class="click-feedback">Nenhuma pressão registrada.</p>
-                </article>
-            </div>
-        </section>
-
-        <section class="panel" id="expansao-guia">
-            <div class="panel-head">
-                <h2>Expansões Recomendadas</h2>
-                <p>Base para evoluir o design system com consistência de produto.</p>
-            </div>
-
-            <div class="grid-3">
-                <article class="card">
-                    <p class="label">Estados semânticos</p>
-                    <div class="semantic-grid" aria-label="Estados semânticos">
-                        <span class="semantic-chip semantic-success">Sucesso</span>
-                        <span class="semantic-chip semantic-warning">Aviso</span>
-                        <span class="semantic-chip semantic-error">Erro</span>
-                        <span class="semantic-chip semantic-info">Info</span>
-                    </div>
-                </article>
-
-                <article class="card">
-                    <p class="label">Escala de opacidade</p>
-                    <div class="opacity-grid" aria-label="Escala de opacidade">
-                        <span class="opacity-chip">8%</span>
-                        <span class="opacity-chip">16%</span>
-                        <span class="opacity-chip">24%</span>
-                        <span class="opacity-chip">40%</span>
-                        <span class="opacity-chip">60%</span>
-                        <span class="opacity-chip">80%</span>
-                    </div>
-                </article>
-
-                <article class="card">
-                    <p class="label">Layout e breakpoints</p>
-                    <div class="token-list" aria-label="Layout e breakpoints">
-                        <div class="token-row"><b>Container</b><span>1100px</span></div>
-                        <div class="token-row"><b>Grid</b><span>12 colunas</span></div>
-                        <div class="token-row"><b>Gutter</b><span>16px</span></div>
-                        <div class="token-row"><b>Mobile</b><span>até 780px</span></div>
-                        <div class="token-row"><b>Desktop</b><span>acima de 780px</span></div>
-                    </div>
-                </article>
-
-                <article class="card">
-                    <p class="label">Motion tokens</p>
-                    <div class="token-list" aria-label="Motion tokens">
-                        <div class="token-row"><b>Rápida</b><span>120ms</span></div>
-                        <div class="token-row"><b>Padrão</b><span>180ms</span></div>
-                        <div class="token-row"><b>Lenta</b><span>240ms</span></div>
-                        <div class="token-row"><b>Curva</b><span>ease-out</span></div>
-                    </div>
-                </article>
-
-                <article class="card">
-                    <p class="label">Acessibilidade</p>
-                    <div class="token-list" aria-label="Checklist de acessibilidade">
-                        <div class="token-row"><b>Contraste</b><span>AA mínimo</span></div>
-                        <div class="token-row"><b>Toque</b><span>alvo 44px+</span></div>
-                        <div class="token-row"><b>Foco</b><span>sempre visível</span></div>
-                        <div class="token-row"><b>Labels</b><span>sem placeholder-only</span></div>
-                    </div>
-                </article>
-
-                <article class="card">
-                    <p class="label">Componentes faltantes</p>
-                    <div class="component-tags" aria-label="Componentes prioritários">
-                        <span class="tag">Tabs</span>
-                        <span class="tag">Toast</span>
-                        <span class="tag">Modal</span>
-                        <span class="tag">Dropdown</span>
-                        <span class="tag">Paginação</span>
-                        <span class="tag">Tabela</span>
-                    </div>
-                </article>
-
-                <article class="card do-dont">
-                    <p class="label">Do e Don&apos;t</p>
-                    <div class="do-dont-grid">
-                        <div class="do-col">
-                            <p class="mini-title">Do</p>
-                            <p class="mini-line">Use secundário apenas para apoio.</p>
-                            <p class="mini-line">Mantenha 1 destaque primário por bloco.</p>
-                        </div>
-                        <div class="dont-col">
-                            <p class="mini-title">Don&apos;t</p>
-                            <p class="mini-line">Não competir cores de texto.</p>
-                            <p class="mini-line">Não remover foco visível.</p>
-                        </div>
-                    </div>
-                </article>
-            </div>
-        </section>
     </main>
 
     <script src="script.js"></script>

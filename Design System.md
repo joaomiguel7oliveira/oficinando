@@ -6,12 +6,11 @@ Definir padrões visuais, tipografia, cores, componentes e layout para manter co
 ---
 
 ## Princípios de Design
-- Tipografia neutra e internacional.
-- Design com aspecto tátil (neumorfismo como padrão principal).
-- Alinhamento bem organizado e hierarquia visual clara.
-- Glassmorfismo reservado para contextos especiais (ex.: topbar com backdrop-blur).
-- Animações curtas **somente** para feedback funcional (80ms–120ms). Sem efeitos decorativos.
-- Não priorize o minimalismo.
+- Tipografia expressiva: Sora para títulos e Manrope para leitura.
+- Design com aspecto tátil-realista: superfície em degradê suave, brilho controlado e sombra interna.
+- Hierarquia visual forte: áreas de foco com contraste material e elevação clara.
+- Motion funcional e discreto: microelevação em hover, pressão inset em active e foco de alta legibilidade.
+- O visual deve parecer moderno e robusto, sem cair em minimalismo frio.
 
 ---
 
@@ -21,9 +20,11 @@ Definir padrões visuais, tipografia, cores, componentes e layout para manter co
 
 | Token CSS          | Valor        | Descrição                           |
 |--------------------|--------------|--------------------------------------|
-| `--bg-primary`     | `#fdf6e3`    | Fundo creme/off-white queimado       |
-| `--bg-secondary`   | `#eee8d5`    | Cinza claro aquecido                 |
-| `--surface`        | `#f8f2e7`    | Superfície elevada (cards, inputs)   |
+| `--bg-primary`     | `#f3ede1`    | Fundo creme quente com profundidade  |
+| `--bg-secondary`   | `#efe6d6`    | Camada auxiliar de fundo             |
+| `--surface`        | `#f6efe3`    | Superfície base de cards e painéis   |
+| `--surface-2`      | `#fbf7ef`    | Camada superior de superfície        |
+| `--surface-grad`   | `linear-gradient(160deg, #fbf8f1 0%, #f5ecdf 38%, #efe5d5 100%)` | Gradiente material padrão |
 | `--border`         | `#d9cfb1`    | Borda/divisor quente suave           |
 | `--text-primary`   | `#14333a`    | Texto principal (quase preto teal)   |
 | `--text-secondary` | `#526a70`    | Texto secundário/muted               |
@@ -36,7 +37,8 @@ Definir padrões visuais, tipografia, cores, componentes e layout para manter co
 | `--radius-sm`      | `6px`        | Raio pequeno                         |
 | `--radius-md`      | `10px`       | Raio médio (botões, cards)           |
 | `--radius-lg`      | `14px`       | Raio grande (painéis)                |
-| `--duration-fast`  | `100ms`      | Duração padrão de transição          |
+| `--duration-fast`  | `140ms`      | Duração rápida de transição          |
+| `--duration-base`  | `220ms`      | Duração padrão de transição          |
 
 ### Tema Neutro (`data-theme="neutro"`)
 
@@ -60,14 +62,15 @@ Definir padrões visuais, tipografia, cores, componentes e layout para manter co
 ## Tipografia
 
 ### Família
-- **Padrão**: Inter (Google Fonts), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif
+- **Títulos**: Sora, "Segoe UI", sans-serif
+- **Corpo e UI**: Manrope, "Segoe UI", sans-serif
 
 ### Escalas e pesos
 
 | Nível    | Tamanho | Peso | Line-height | Uso                        |
 |----------|---------|------|-------------|----------------------------|
-| H1       | 24px    | 700  | 1.2         | Título da página/guia      |
-| H2       | 22px    | 700  | 1.2         | Título de seção            |
+| H1       | 24px    | 800  | 1.15        | Título da página/guia      |
+| H2       | 20px    | 700  | 1.2         | Título de seção            |
 | H3       | 18px    | 700  | 1.3         | Título de card/bloco       |
 | Body     | 14px    | 400  | 1.5         | Texto corrido              |
 | Label    | 12px    | 600  | 1.4         | Rótulos de campo e seção   |
@@ -94,19 +97,18 @@ Sistema de escala baseado em 4px.
 
 ---
 
-## Elevação (Neumorfismo)
+## Elevação e Material
 
-Os elementos usam sombras duplas (clara acima-esquerda, escura abaixo-direita) para criar profundidade tátil.
+O sistema combina sombra externa curta com brilho interno para simular material físico moderno sem excesso de ruído.
 
 | Nível   | Box-shadow                                                                                      | Uso                        |
 |---------|-------------------------------------------------------------------------------------------------|----------------------------|
-| Base    | `inset 0 0 0 1px rgba(255,255,255,0.35)`                                                        | Área neutra, sem destaque  |
-| Raised  | `-10px -10px 18px rgba(255,255,255,0.86), 10px 10px 16px rgba(160,142,111,0.28)`               | Cards, painéis             |
-| Inset   | `inset -8px -8px 14px rgba(255,255,255,0.8), inset 8px 8px 14px rgba(160,142,111,0.24)`        | Campos de input internos   |
-| Pressed | `inset -10px -10px 15px rgba(255,255,255,0.74), inset 10px 10px 15px rgba(160,142,111,0.34)`   | Botão pressionado          |
-| Panel   | `-10px -10px 18px rgba(255,255,255,0.8), 10px 10px 18px rgba(163,145,117,0.24)`                | `.panel` (seções)          |
-| Small   | `-7px -7px 13px rgba(255,255,255,0.78), 7px 7px 13px rgba(160,142,111,0.22)`                   | Cards menores              |
-| Btn     | `inset 0 1px 0 rgba(255,255,255,0.28), 0 6px 12px rgba(10,111,127,0.34)`                       | Botão primário             |
+| Surface | `0 10px 18px rgba(95,73,42,0.12), inset 0 1px 0 rgba(255,255,255,0.78)`                          | Elemento base              |
+| Hover   | `0 14px 24px rgba(95,73,42,0.16), inset 0 1px 0 rgba(255,255,255,0.84)`                          | Hover de cards             |
+| Raised  | `0 20px 36px rgba(92,68,36,0.18), inset 0 1px 0 rgba(255,255,255,0.9)`                           | Painéis principais         |
+| Modal   | `0 28px 44px rgba(78,58,31,0.26), inset 0 1px 0 rgba(255,255,255,0.85)`                          | Modais/popovers            |
+| Inset   | `inset 2px 3px 8px rgba(131,108,71,0.22), inset -2px -2px 6px rgba(255,255,255,0.66)`           | Inputs e áreas pressionadas|
+| Pressed | `inset 0 4px 10px rgba(84,58,26,0.24), inset 0 -2px 4px rgba(255,255,255,0.46)`                  | Clique/pressionamento      |
 
 ---
 
@@ -299,16 +301,26 @@ Elemento para execução de tentativas.
 
 ## Motion e Transições
 
-- Regra: **sem animações decorativas**
-- `--duration-fast: 100ms`, `easing: linear`
+- Regra: animação curta com função de leitura tátil.
+- `--duration-fast: 140ms`, `--duration-base: 220ms`, `easing: cubic-bezier(0.2, 0.8, 0.2, 1)`
 
 | Caso                           | Comportamento                      |
 |--------------------------------|------------------------------------|
-| Hover em botão                 | `filter: brightness(0.95)`, 100ms  |
-| Estado pressed                 | Sombra inset, 100ms                |
-| Switch checked                 | `translateX(20px)`, 100ms          |
+| Hover em botão                 | `filter: brightness(0.96)` + `translateY(-1px)`, 140ms |
+| Estado pressed                 | Sombra inset + `translateY(1px)`, 140ms                |
+| Switch checked                 | realce de thumb + mudança de trilha, 140ms             |
 | Toast/alerta aparece           | Instantâneo                        |
-| Modal abre (se necessário)     | ≤ 120ms                            |
+| Modal abre (se necessário)     | ≤ 220ms                            |
+
+---
+
+## Sugestões para evoluir o guia
+
+1. Criar tokens semânticos de superfície (`surface-1`, `surface-2`, `surface-3`) para separar contexto visual por profundidade.
+2. Padronizar estados de interação para todos os componentes: `default`, `hover`, `focus`, `active`, `disabled`, `loading`.
+3. Adicionar exemplos comparativos de "uso correto" e "anti-padrão" por componente crítico (botão, card, input, tabela).
+4. Definir três densidades de interface (compacta, padrão, confortável) para apoiar desktop e mobile.
+5. Publicar checklist de contraste e foco por release para impedir regressão visual.
 
 ---
 
