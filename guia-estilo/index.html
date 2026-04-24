@@ -7,16 +7,23 @@
     <title>Guia de Estilo Tatil | Oficinando</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap"
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles-temas.css">
 </head>
 
-<body data-theme="solarizado">
+<body>
     <header class="topbar">
-        <div>
-            <p class="eyebrow">Oficinando UI</p>
-            <h1>Guia de Estilo Tatil</h1>
+        <div class="topbar-content">
+            <div>
+                <p class="eyebrow">Oficinando UI</p>
+                <h1>Guia de Estilo Tatil</h1>
+            </div>
+            <button id="themeToggle" class="theme-toggle" type="button" aria-pressed="false">
+                Tema neutro
+            </button>
         </div>
     </header>
 
@@ -32,42 +39,28 @@
                     <p class="label">Paleta principal</p>
                     <div class="palette-list" aria-label="Paleta principal por papel">
                         <div class="palette-item palette-bg">
-                            <div class="palette-token">
-                                <b>Background</b>
-                                <span>Base global da interface</span>
-                            </div>
+                            <span class="palette-dot" style="background:#f3ede1" aria-hidden="true"></span>
+                            <span class="palette-name">Background</span>
                             <code>#f3ede1</code>
                         </div>
-
                         <div class="palette-item palette-primary">
-                            <div class="palette-token">
-                                <b>Primary</b>
-                                <span>Ações principais e destaque</span>
-                            </div>
+                            <span class="palette-dot" style="background:#0b6f7f" aria-hidden="true"></span>
+                            <span class="palette-name">Primary</span>
                             <code>#0b6f7f</code>
                         </div>
-
                         <div class="palette-item palette-text">
-                            <div class="palette-token">
-                                <b>Texto principal</b>
-                                <span>Conteúdo principal em superfícies claras</span>
-                            </div>
+                            <span class="palette-dot" style="background:#15323a" aria-hidden="true"></span>
+                            <span class="palette-name">Texto principal</span>
                             <code>#15323a</code>
                         </div>
-
                         <div class="palette-item palette-muted">
-                            <div class="palette-token">
-                                <b>Texto de apoio</b>
-                                <span>Metadados, descrições curtas e informação secundária</span>
-                            </div>
+                            <span class="palette-dot" style="background:#6f6858" aria-hidden="true"></span>
+                            <span class="palette-name">Texto de apoio</span>
                             <code>#6f6858</code>
                         </div>
-
                         <div class="palette-item palette-border">
-                            <div class="palette-token">
-                                <b>Borda e divisor</b>
-                                <span>Contorno de campos, separadores e limites estruturais</span>
-                            </div>
+                            <span class="palette-dot" style="background:#d8caac" aria-hidden="true"></span>
+                            <span class="palette-name">Borda e divisor</span>
                             <code>#d8caac</code>
                         </div>
                     </div>
@@ -92,31 +85,29 @@
                             <b>surface-grad</b>
                             <span>Painéis principais do guia</span>
                         </div>
-                    </div>
-                    <div class="surface-stack" aria-label="Composição visual das superfícies">
-                        <div class="surface-layer surface-layer-1">surface-1</div>
-                        <div class="surface-layer surface-layer-2">surface-2</div>
-                        <div class="surface-layer surface-layer-3">surface-3</div>
+                        <div class="surface-item surface-item-negative">
+                            <b>surface-neg</b>
+                            <span>Campos e áreas de baixo relevo</span>
+                        </div>
+                        <div class="surface-item surface-item-input">
+                            <b>surface-input</b>
+                            <span>Superfície de preenchimento de campos</span>
+                        </div>
                     </div>
                 </article>
 
                 <article class="card card-typography">
-                    <p class="label">Tipografia (UI e Conteúdo)</p>
-                    <div class="type-grid" aria-label="Escalas tipográficas">
-                        <div class="type-block">
-                            <p class="type-block-title">UI</p>
-                            <p class="type-sample type-ui-xl">UI XL 24/1.2 700</p>
-                            <p class="type-sample type-ui-lg">UI LG 20/1.2 600</p>
-                            <p class="type-sample type-ui-md">UI MD 16/1.3 600</p>
-                            <p class="type-sample type-caption">Label/Caption 12</p>
-                        </div>
-                        <div class="type-block">
-                            <p class="type-block-title">Conteúdo</p>
-                            <p class="type-sample type-content-lg">Body LG: leitura de explicações longas.</p>
-                            <p class="type-sample type-content-md">Body MD: texto padrão da interface.</p>
-                            <p class="type-sample type-content-sm">Body SM: notas, apoio e descrições.</p>
-                            <p class="type-sample type-body-secondary">Secondary: baixa prioridade visual.</p>
-                        </div>
+                    <p class="label">Tipografia</p>
+                    <div class="type-section">
+                        <div class="type-font-spec"><strong>Fonte de títulos:</strong> Sora</div>
+                        <div class="type-font-spec"><strong>Fonte de conteúdo:</strong> Manrope</div>
+                        <div class="type-sample type-ui-xl">Título principal 24/1.2 700</div>
+                        <div class="type-sample type-ui-md">Título de bloco 16/1.3 600</div>
+                        <div class="type-sample type-content-md">Texto padrão 14/1.5 400</div>
+                        <div class="type-sample type-body-strong">Texto de ênfase 14/1.5 700</div>
+                        <div class="type-sample type-body-secondary">Texto secundário 14/1.5 400</div>
+                        <div class="type-sample type-caption">Legenda 12</div>
+                        <div class="type-sample type-eyebrow">Rótulo/categoria 11 uppercase</div>
                     </div>
                 </article>
 
@@ -151,10 +142,19 @@
             <div class="grid-3">
                 <article class="card">
                     <p class="label">Botões</p>
-                    <div class="stack-sm">
+                    <div class="btn-group">
                         <button class="btn btn-primary" type="button">Primário</button>
                         <button class="btn btn-secondary" type="button">Secundário</button>
-                        <button class="btn btn-primary" type="button" disabled>Desabilitado</button>
+                    </div>
+                    <p class="btn-group-label">Em foco</p>
+                    <div class="btn-group">
+                        <button class="btn btn-primary is-focus" type="button">Primário em foco</button>
+                        <button class="btn btn-secondary is-focus" type="button">Secundário em foco</button>
+                    </div>
+                    <p class="btn-group-label">Desabilitado</p>
+                    <div class="btn-group">
+                        <button class="btn btn-secondary" type="button" disabled>Secundário desabilitado</button>
+                        <button class="btn btn-primary" type="button" disabled>Primário desabilitado</button>
                     </div>
                 </article>
 
@@ -208,6 +208,76 @@
                             <div class="slider-ticks" aria-hidden="true">
                                 <span>0</span><span>25</span><span>50</span><span>75</span><span>100</span>
                             </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="panel" id="elementos-site">
+            <div class="panel-head">
+                <h2>Elementos do site</h2>
+                <p>Modelos de interface para páginas e fluxos do produto.</p>
+            </div>
+
+            <div class="grid-3">
+                <article class="card element-card element-card-wide">
+                    <p class="label">Header de professor</p>
+                    <div class="teacher-header-sample">
+                        <div class="teacher-header-profile">
+                            <button class="profile-chip" type="button">Renato Prado | Turma 7B</button>
+                        </div>
+                        <nav class="teacher-header-nav" aria-label="Navegação do professor">
+                            <button class="btn btn-secondary btn-mini" type="button">Home</button>
+                            <button class="btn btn-secondary btn-mini" type="button">Resultados</button>
+                            <button class="btn btn-secondary btn-mini" type="button">Turmas</button>
+                            <button class="btn btn-secondary btn-mini" type="button">Criador de avaliações</button>
+                            <button class="btn btn-secondary btn-mini" type="button">Editor de nanograma</button>
+                            <button class="btn btn-secondary btn-mini" type="button">Nanograma</button>
+                            <button class="btn btn-secondary btn-mini" type="button">Configurações</button>
+                            <button class="btn btn-primary btn-mini" type="button">Sair</button>
+                        </nav>
+                    </div>
+                </article>
+
+                <article class="card element-card">
+                    <p class="label">Card de aluno</p>
+                    <div class="assessment-card">
+                        <div class="assessment-head">
+                            <p class="assessment-title">Frações e proporções</p>
+                            <span class="status-chip status-available">Disponível</span>
+                        </div>
+                        <p class="assessment-description">Avaliação de revisão com foco em leitura de problemas e
+                            escolha de alternativa correta.</p>
+                        <div class="assessment-meta">
+                            <span>10 questões</span>
+                            <span>1 tentativa permitida</span>
+                        </div>
+                        <div class="assessment-actions">
+                            <button class="btn btn-secondary" type="button">Abrir</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card element-card">
+                    <p class="label">Card de professor</p>
+                    <div class="assessment-card">
+                        <div class="assessment-head">
+                            <p class="assessment-title">Frações e proporções</p>
+                        </div>
+                        <p class="assessment-description">Aplicação para turma 7B com resumo bloqueado até confirmação
+                            do professor.</p>
+                        <div class="assessment-meta">
+                            <span>10 questões</span>
+                            <span>1 tentativa permitida</span>
+                        </div>
+                        <div class="assessment-actions assessment-actions-professor">
+                            <button class="btn btn-secondary btn-mini" type="button">Abrir</button>
+                            <button class="btn btn-secondary btn-mini" type="button">Bloquear início</button>
+                            <button class="btn btn-secondary btn-mini" type="button">Liberar resumo</button>
+                            <button class="btn btn-secondary btn-mini" type="button">Ativar permanência</button>
+                            <button class="btn btn-secondary btn-mini" type="button">Editar</button>
+                            <button class="btn btn-danger btn-mini" type="button">Excluir</button>
                         </div>
                     </div>
                 </article>

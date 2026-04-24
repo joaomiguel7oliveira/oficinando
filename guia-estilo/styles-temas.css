@@ -1,0 +1,558 @@
+/*
+ * Arquivo de temas otimizado - remove duplicações e define variáveis faltantes
+ * Carregado após styles.css para sobrescrever apenas variáveis e estilos temáticos
+ */
+
+:root {
+    --elevation-flat-border: rgba(0, 0, 0, 0.07);
+    --elevation-flat-shadow: 0 2px 4px rgba(116, 91, 56, 0.08);
+    --btn-primary-text: #ffffff;
+    --btn-primary-bg-start: color-mix(in srgb, var(--primary-strong) 88%, #52b9c0);
+    --btn-primary-bg-end: var(--primary);
+    --btn-primary-border: rgba(255, 255, 255, 0.16);
+    --btn-primary-highlight: rgba(255, 255, 255, 0.3);
+    --btn-primary-depth: color-mix(in srgb, var(--primary), black 26%);
+    --btn-primary-press-top: color-mix(in srgb, var(--primary), black 12%);
+    --btn-primary-press-bottom: color-mix(in srgb, var(--primary), white 34%);
+    --btn-primary-glow: color-mix(in srgb, var(--primary), transparent 84%);
+
+    --btn-secondary-text: var(--text);
+    --btn-secondary-bg-start: color-mix(in srgb, var(--surface-2), white 6%);
+    --btn-secondary-bg-end: color-mix(in srgb, var(--surface), black 6%);
+    --btn-secondary-depth: rgba(131, 108, 71, 0.16);
+
+    --btn-danger-text: #ffffff;
+    --btn-danger-bg-start: #a64a3a;
+    --btn-danger-bg-end: #8d3022;
+    --btn-danger-border: rgba(255, 255, 255, 0.12);
+    --btn-danger-depth: rgba(104, 28, 18, 0.16);
+    --btn-danger-press-top: color-mix(in srgb, var(--btn-danger-bg-end), black 16%);
+    --btn-danger-press-bottom: color-mix(in srgb, var(--btn-danger-bg-start), white 26%);
+    --btn-danger-glow: color-mix(in srgb, var(--btn-danger-bg-end), transparent 84%);
+
+    --btn-shadow-drop: 0 8px 14px rgba(91, 67, 35, 0.2);
+    --btn-shadow-side: 6px 6px 12px rgba(146, 118, 76, 0.18);
+    --btn-shadow-side-soft: 3px 3px 7px rgba(146, 118, 76, 0.12);
+    --btn-shadow-pressed-soft: -1px -1px 5px rgba(146, 118, 76, 0.732);
+    --btn-press-soft: -1px -1px 5px rgba(146, 118, 76, 0.24);
+    --btn-white-soft: rgba(255, 255, 255, 0.78);
+    --btn-white-strong: rgba(255, 255, 255, 0.98);
+    --btn-active-white-lift: rgba(255, 255, 255, 0.5);
+
+    --btn-surface-edge: color-mix(in srgb, var(--surface-1), black 7%);
+    --btn-surface-press-edge: color-mix(in srgb, var(--surface-1), black 16%);
+    --btn-press-highlight: color-mix(in srgb, var(--surface-1), white 86%);
+
+    --card-shadow-inset: rgba(255, 255, 255, 0.84);
+    --input-bg-gradient: linear-gradient(160deg, #f7f1e4 0%, #f2e8d8 100%);
+    --input-shadow-inner: rgba(131, 108, 71, 0.16);
+    --input-shadow-border: rgba(255, 255, 255, 0.78);
+    --input-shadow-bottom: rgba(255, 255, 255, 0.96);
+    --input-shadow-drop: rgba(255, 255, 255, 0.65);
+
+    --switch-thumb-gradient: linear-gradient(150deg, #ffffff, #dfd4bc);
+    --switch-thumb-shadow-dark: rgba(88, 72, 50, 0.32);
+    --switch-thumb-shadow-light: rgba(255, 255, 255, 0.66);
+    --switch-unchecked-shadow-dark: rgba(160, 142, 111, 0.34);
+    --switch-unchecked-shadow-light: rgba(255, 255, 255, 0.7);
+
+    --range-thumb-gradient: linear-gradient(150deg, #ffffff, #d9cfb8);
+    --range-thumb-shadow-dark: rgba(120, 100, 70, 0.32);
+    --range-thumb-shadow-light: rgba(255, 255, 255, 0.82);
+    --range-track-shadow-light: rgba(255, 255, 255, 0.6);
+    --range-track-shadow-dark: rgba(120, 100, 70, 0.28);
+
+    --surface-neg-gradient: linear-gradient(165deg, color-mix(in srgb, var(--surface-1) 96%, #bf9c6f) 0%, color-mix(in srgb, var(--surface-1) 92%, #bf9c6f) 100%);
+    --surface-neg-shadow-dark: rgba(99, 73, 35, 0.2);
+    --surface-neg-shadow-light: rgba(255, 255, 255, 0.56);
+    --surface-input-bg: linear-gradient(160deg, #f7f1e4 0%, #f2e8d8 100%);
+
+    --profile-chip-border: rgba(216, 202, 172, 0.28);
+    --profile-chip-shadow-inset: rgba(255, 255, 255, 0.76);
+    --profile-chip-shadow-lift: -2px -2px 6px rgba(255, 255, 255, 0.48);
+    --profile-chip-shadow-dark: rgba(146, 118, 76, 0.12);
+
+    --slider-label-color: #eef5f8;
+}
+
+/* Remove contorno de cards e panels em todos os temas */
+.panel,
+.card {
+    border: none !important;
+}
+
+.panel::before {
+    background: none !important;
+}
+
+/* ========== NEUTRAL ========== */
+body[data-theme="neutral"] {
+    --elevation-flat-border: rgba(52, 77, 89, 0.10);
+    --elevation-flat-shadow: 0 2px 5px rgba(52, 77, 89, 0.12);
+    --shadow-hover: 0 6px 10px rgba(52, 77, 89, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.86);
+    --btn-secondary-depth: rgba(52, 77, 89, 0.16);
+
+    --btn-shadow-drop: 0 8px 14px rgba(52, 77, 89, 0.2);
+    --btn-shadow-side: 6px 6px 12px rgba(79, 108, 122, 0.18);
+    --btn-shadow-side-soft: 3px 3px 7px rgba(79, 108, 122, 0.12);
+    --btn-press-soft: -1px -1px 5px rgba(79, 108, 122, 0.24);
+
+    --btn-surface-edge: color-mix(in srgb, var(--surface-1), black 10%);
+    --btn-surface-press-edge: color-mix(in srgb, var(--surface-1), black 20%);
+    --btn-press-highlight: color-mix(in srgb, var(--surface-1), white 88%);
+
+    --btn-primary-bg-start: color-mix(in srgb, var(--primary-strong) 90%, #7fcad6);
+    --btn-primary-bg-end: var(--primary);
+    --btn-primary-depth: rgba(47, 108, 123, 0.16);
+    --btn-primary-press-top: color-mix(in srgb, var(--primary), black 10%);
+    --btn-primary-press-bottom: color-mix(in srgb, var(--primary), white 35%);
+    --btn-primary-glow: rgba(47, 108, 123, 0.24);
+
+    --btn-secondary-bg-start: color-mix(in srgb, var(--surface-2), white 8%);
+    --btn-secondary-bg-end: color-mix(in srgb, var(--surface), black 8%);
+    --btn-secondary-press-inner: rgba(0, 0, 0, 0.42);
+
+    --btn-danger-bg-start: #97524a;
+    --btn-danger-bg-end: #7d3b35;
+    --btn-danger-depth: rgba(127, 47, 38, 0.18);
+    --btn-danger-press-top: rgba(0, 0, 0, 0.56);
+    --btn-danger-press-bottom: rgba(97, 41, 32, 0.68);
+    --btn-danger-glow: rgba(127, 47, 38, 0.24);
+
+    --btn-white-soft: rgba(255, 255, 255, 0.78);
+    --btn-white-strong: rgba(255, 255, 255, 0.92);
+    --btn-active-white-lift: rgba(255, 255, 255, 0.5);
+
+    --card-shadow-inset: rgba(255, 255, 255, 0.82);
+    --input-bg-gradient: linear-gradient(160deg, #e8eef2 0%, #e0e8ed 100%);
+    --input-shadow-inner: rgba(52, 77, 89, 0.12);
+    --switch-thumb-gradient: linear-gradient(150deg, #ffffff, #d4e4ec);
+    --switch-thumb-shadow-dark: rgba(52, 77, 89, 0.28);
+    --range-thumb-gradient: linear-gradient(150deg, #ffffff, #d0e0ec);
+    --range-thumb-shadow-dark: rgba(52, 77, 89, 0.28);
+
+    --surface-neg-gradient: linear-gradient(165deg, color-mix(in srgb, var(--surface-1) 96%, #8db9d5) 0%, color-mix(in srgb, var(--surface-1) 92%, #8db9d5) 100%);
+    --surface-neg-shadow-dark: rgba(52, 77, 89, 0.12);
+    --surface-input-bg: linear-gradient(160deg, #e8eef2 0%, #e0e8ed 100%);
+    --profile-chip-border: rgba(177, 197, 209, 0.32);
+    --profile-chip-shadow-inset: rgba(255, 255, 255, 0.74);
+    --profile-chip-shadow-lift: -2px -2px 6px rgba(255, 255, 255, 0.44);
+    --profile-chip-shadow-dark: rgba(79, 108, 122, 0.1);
+    --slider-label-color: #eef5f8;
+
+    --slider-tooltip-color: #1e3138;
+}
+
+/* ========== OCEAN ========== */
+body[data-theme="ocean"] {
+    --elevation-flat-border: rgba(39, 76, 92, 0.11);
+    --elevation-flat-shadow: 0 2px 5px rgba(39, 76, 92, 0.13);
+    --bg: #ddeaf0;
+    --surface-1: #cddfe7;
+    --surface-2: #dcebf1;
+    --surface-3: #eaf4f8;
+    --surface: var(--surface-2);
+    --border: #a7c4d0;
+    --text: #163542;
+    --text-muted: #4d6d79;
+    --primary: #0e6d85;
+    --primary-strong: #2f96ad;
+    --focus: #0e6d85;
+    --surface-grad: linear-gradient(160deg, #eaf4f8 0%, #dcebf1 38%, #d5e6ec 100%);
+    --shadow-sm: 0 10px 18px rgba(39, 76, 92, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    --shadow-raised: 0 20px 36px rgba(39, 76, 92, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.92);
+    --shadow-modal: 0 12px 20px rgba(39, 76, 92, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.86);
+    --shadow-pressed: inset 0 4px 10px rgba(39, 76, 92, 0.24), inset 0 -2px 4px rgba(255, 255, 255, 0.46);
+    --shadow-neu-glow: -3px -3px 7px rgba(255, 255, 255, 0.56), 3px 3px 8px rgba(67, 111, 129, 0.16);
+
+    --shadow-hover: 0 6px 10px rgba(39, 76, 92, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.84);
+    --btn-secondary-depth: rgba(39, 76, 92, 0.16);
+
+    --btn-shadow-drop: 0 8px 14px rgba(39, 76, 92, 0.15);
+    --btn-shadow-side: 6px 6px 12px rgba(39, 76, 92, 0.12);
+    --btn-shadow-side-soft: 3px 3px 7px rgba(39, 76, 92, 0.1);
+    --btn-shadow-pressed-soft: -1px -1px 5px rgba(67, 111, 129, 0.24);
+    --btn-press-soft: -1px -1px 5px rgba(67, 111, 129, 0.24);
+
+    --btn-surface-edge: color-mix(in srgb, var(--surface-1), black 8%);
+    --btn-surface-press-edge: color-mix(in srgb, var(--surface-1), black 16%);
+    --btn-press-highlight: color-mix(in srgb, var(--surface-1), white 86%);
+
+    --btn-primary-bg-start: color-mix(in srgb, var(--primary-strong) 92%, #3fd0e0);
+    --btn-primary-bg-end: var(--primary);
+    --btn-primary-depth: rgba(14, 109, 133, 0.16);
+    --btn-primary-press-top: color-mix(in srgb, var(--primary), black 10%);
+    --btn-primary-press-bottom: color-mix(in srgb, var(--primary), white 35%);
+    --btn-primary-glow: rgba(14, 109, 133, 0.12);
+
+    --btn-secondary-bg-start: color-mix(in srgb, var(--surface-2), white 8%);
+    --btn-secondary-bg-end: color-mix(in srgb, var(--surface), black 8%);
+    --btn-secondary-press-inner: rgba(0, 0, 0, 0.42);
+
+    --btn-danger-bg-start: #9b5a4f;
+    --btn-danger-bg-end: #7d433a;
+    --btn-danger-depth: rgba(125, 67, 58, 0.16);
+    --btn-danger-press-top: rgba(0, 0, 0, 0.56);
+    --btn-danger-press-bottom: rgba(155, 90, 79, 0.68);
+    --btn-danger-glow: rgba(155, 90, 79, 0.12);
+
+    --btn-white-soft: rgba(255, 255, 255, 0.78);
+    --btn-white-strong: rgba(255, 255, 255, 0.92);
+    --btn-active-white-lift: rgba(255, 255, 255, 0.52);
+
+    --card-shadow-inset: rgba(67, 111, 129, 0.08);
+    --input-bg-gradient: linear-gradient(160deg, #e5ecf2 0%, #dce5ed 100%);
+    --input-shadow-inner: rgba(39, 76, 92, 0.12);
+    --switch-thumb-gradient: linear-gradient(150deg, #ffffff, #d4e4ec);
+    --switch-thumb-shadow-dark: rgba(39, 76, 92, 0.28);
+    --range-thumb-gradient: linear-gradient(150deg, #ffffff, #d0e0ec);
+    --range-thumb-shadow-dark: rgba(39, 76, 92, 0.28);
+    --range-track-shadow-dark: rgba(67, 111, 129, 0.18);
+
+    --surface-neg-gradient: linear-gradient(165deg, color-mix(in srgb, var(--surface-1) 96%, #7fb8d1) 0%, color-mix(in srgb, var(--surface-1) 92%, #7fb8d1) 100%);
+    --surface-neg-shadow-dark: rgba(39, 76, 92, 0.12);
+    --surface-input-bg: linear-gradient(160deg, #e5ecf2 0%, #dce5ed 100%);
+    --profile-chip-border: rgba(167, 196, 208, 0.32);
+    --profile-chip-shadow-inset: rgba(255, 255, 255, 0.74);
+    --profile-chip-shadow-lift: -2px -2px 6px rgba(255, 255, 255, 0.44);
+    --profile-chip-shadow-dark: rgba(67, 111, 129, 0.1);
+    --slider-label-color: #eef5f8;
+
+    --slider-tooltip-color: #163542;
+}
+
+/* ========== GRAY ========== */
+body[data-theme="gray"] {
+    --elevation-flat-border: rgba(70, 70, 70, 0.13);
+    --elevation-flat-shadow: 0 2px 5px rgba(70, 70, 70, 0.13);
+    --bg: #ececec;
+    --surface-1: #dedede;
+    --surface-2: #e9e9e9;
+    --surface-3: #f3f3f3;
+    --surface: var(--surface-2);
+    --border: #c5c5c5;
+    --text: #2a2a2a;
+    --text-muted: #6b6b6b;
+    --primary: #707070;
+    --primary-strong: #888888;
+    --focus: #707070;
+    --surface-grad: linear-gradient(160deg, #f3f3f3 0%, #e9e9e9 38%, #e1e1e1 100%);
+    --shadow-sm: 0 10px 18px rgba(70, 70, 70, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    --shadow-raised: 0 20px 36px rgba(70, 70, 70, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.92);
+    --shadow-modal: 0 12px 20px rgba(70, 70, 70, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.86);
+    --shadow-pressed: inset 0 4px 10px rgba(70, 70, 70, 0.24), inset 0 -2px 4px rgba(255, 255, 255, 0.46);
+    --shadow-neu-glow: -3px -3px 7px rgba(255, 255, 255, 0.54), 3px 3px 8px rgba(100, 100, 100, 0.16);
+
+    --shadow-hover: 0 6px 10px rgba(70, 70, 70, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.84);
+    --btn-secondary-depth: rgba(70, 70, 70, 0.16);
+
+    --btn-shadow-drop: 0 8px 14px rgba(70, 70, 70, 0.15);
+    --btn-shadow-side: 6px 6px 12px rgba(70, 70, 70, 0.12);
+    --btn-shadow-side-soft: 3px 3px 7px rgba(70, 70, 70, 0.1);
+    --btn-shadow-pressed-soft: -1px -1px 5px rgba(100, 100, 100, 0.24);
+    --btn-press-soft: -1px -1px 5px rgba(100, 100, 100, 0.24);
+
+    --btn-surface-edge: color-mix(in srgb, var(--surface-1), black 10%);
+    --btn-surface-press-edge: color-mix(in srgb, var(--surface-1), black 20%);
+    --btn-press-highlight: color-mix(in srgb, var(--surface-1), black 4%);
+
+    --btn-primary-bg-start: color-mix(in srgb, var(--primary-strong) 80%, #b0b0b0);
+    --btn-primary-bg-end: var(--primary);
+    --btn-primary-depth: rgba(112, 112, 112, 0.16);
+    --btn-primary-press-top: color-mix(in srgb, var(--primary), black 10%);
+    --btn-primary-press-bottom: color-mix(in srgb, var(--primary), white 35%);
+    --btn-primary-glow: rgba(112, 112, 112, 0.12);
+
+    --btn-secondary-bg-start: color-mix(in srgb, var(--surface-2), white 8%);
+    --btn-secondary-bg-end: color-mix(in srgb, var(--surface), black 8%);
+    --btn-secondary-press-inner: rgba(0, 0, 0, 0.42);
+
+    --btn-danger-bg-start: #8a8a8a;
+    --btn-danger-bg-end: #727272;
+    --btn-danger-depth: rgba(114, 114, 114, 0.16);
+    --btn-danger-press-top: rgba(0, 0, 0, 0.56);
+    --btn-danger-press-bottom: rgba(138, 138, 138, 0.68);
+    --btn-danger-glow: rgba(138, 138, 138, 0.12);
+
+    --btn-white-soft: rgba(255, 255, 255, 0.78);
+    --btn-white-strong: rgba(255, 255, 255, 0.92);
+    --btn-active-white-lift: rgba(255, 255, 255, 0.52);
+
+    --card-shadow-inset: rgba(100, 100, 100, 0.06);
+    --input-bg-gradient: linear-gradient(160deg, #e4e4e4 0%, #dcdcdc 100%);
+    --input-shadow-inner: rgba(70, 70, 70, 0.12);
+    --switch-thumb-gradient: linear-gradient(150deg, #f5f5f5, #c0c0c0);
+    --switch-thumb-shadow-dark: rgba(70, 70, 70, 0.28);
+    --range-thumb-gradient: linear-gradient(150deg, #f5f5f5, #b8b8b8);
+    --range-thumb-shadow-dark: rgba(70, 70, 70, 0.28);
+    --range-track-shadow-dark: rgba(100, 100, 100, 0.18);
+
+    --surface-neg-gradient: linear-gradient(165deg, color-mix(in srgb, var(--surface-1) 96%, #a8a8a8) 0%, color-mix(in srgb, var(--surface-1) 92%, #a8a8a8) 100%);
+    --surface-neg-shadow-dark: rgba(70, 70, 70, 0.1);
+    --surface-input-bg: linear-gradient(160deg, #e4e4e4 0%, #dcdcdc 100%);
+    --profile-chip-border: rgba(160, 160, 160, 0.28);
+    --profile-chip-shadow-inset: rgba(255, 255, 255, 0.72);
+    --profile-chip-shadow-lift: -2px -2px 6px rgba(255, 255, 255, 0.42);
+    --profile-chip-shadow-dark: rgba(100, 100, 100, 0.08);
+    --slider-label-color: #f3f3f3;
+
+    --slider-tooltip-color: #2a2a2a;
+}
+
+/* ========== DARK ========== */
+body[data-theme="dark"] {
+    --elevation-flat-border: rgba(130, 156, 170, 0.24);
+    --elevation-flat-shadow: 0 3px 10px rgba(0, 0, 0, 0.42);
+    --bg: #172028;
+    --surface-1: #1f2b35;
+    --surface-2: #25323d;
+    --surface-3: #2c3b47;
+    --surface: var(--surface-2);
+    --border: #3a4b58;
+    --text: #e6edf2;
+    --text-muted: #a8b8c2;
+    --primary: #4e95ac;
+    --primary-strong: #69adc2;
+    --focus: #69adc2;
+    --surface-grad: linear-gradient(160deg, #2c3b47 0%, #25323d 38%, #1f2b35 100%);
+    --shadow-sm: 0 10px 18px rgba(10, 15, 20, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    --shadow-raised: 0 20px 36px rgba(10, 15, 20, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    --shadow-modal: 0 12px 20px rgba(10, 15, 20, 0.36), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    --shadow-pressed: inset 0 4px 10px rgba(0, 0, 0, 0.38), inset 0 -2px 4px rgba(255, 255, 255, 0.08);
+    --shadow-neu-glow: -2px -2px 4px rgba(255, 255, 255, 0.04), 2px 2px 4px rgba(0, 0, 0, 0.3);
+
+    --shadow-hover: 0 6px 10px rgba(10, 15, 20, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    --btn-secondary-depth: rgba(12, 18, 24, 0.24);
+
+    --btn-shadow-drop: 0 8px 14px rgba(10, 15, 20, 0.5);
+    --btn-shadow-side: 6px 6px 12px rgba(12, 18, 24, 0.45);
+    --btn-shadow-side-soft: 3px 3px 7px rgba(12, 18, 24, 0.35);
+    --btn-shadow-pressed-soft: -1px -1px 5px rgba(12, 18, 24, 0.28);
+    --btn-press-soft: -1px -1px 5px rgba(12, 18, 24, 0.28);
+
+    --btn-surface-edge: color-mix(in srgb, var(--surface-1), black 28%);
+    --btn-surface-press-edge: color-mix(in srgb, var(--surface-1), black 40%);
+    --btn-press-highlight: color-mix(in srgb, var(--surface-1), black 22%);
+
+    --btn-primary-bg-start: color-mix(in srgb, var(--primary-strong) 80%, #2c4e5c);
+    --btn-primary-bg-end: var(--primary);
+    --btn-primary-depth: rgba(78, 149, 172, 0.16);
+    --btn-primary-press-top: color-mix(in srgb, var(--primary), black 15%);
+    --btn-primary-press-bottom: color-mix(in srgb, var(--primary), white 25%);
+    --btn-primary-glow: rgba(78, 149, 172, 0.08);
+
+    --btn-secondary-text: #dbe5ec;
+    --btn-secondary-bg-start: color-mix(in srgb, var(--surface-2), white 4%);
+    --btn-secondary-bg-end: color-mix(in srgb, var(--surface), black 14%);
+    --btn-secondary-press-inner: rgba(255, 255, 255, 0.12);
+
+    --btn-danger-bg-start: #9b4d44;
+    --btn-danger-bg-end: #7a372f;
+    --btn-danger-depth: rgba(122, 55, 47, 0.16);
+    --btn-danger-press-top: rgba(255, 255, 255, 0.12);
+    --btn-danger-press-bottom: rgba(155, 77, 68, 0.4);
+    --btn-danger-glow: rgba(155, 77, 68, 0.08);
+
+    --btn-white-soft: rgba(255, 255, 255, 0.08);
+    --btn-white-strong: rgba(255, 255, 255, 0.15);
+    --btn-active-white-lift: rgba(255, 255, 255, 0.08);
+
+    --card-shadow-inset: rgba(255, 255, 255, 0.02);
+    --input-bg-gradient: linear-gradient(160deg, #252f37 0%, #1f282f 100%);
+    --input-shadow-inner: rgba(0, 0, 0, 0.26);
+    --input-shadow-border: rgba(255, 255, 255, 0.08);
+    --input-shadow-bottom: rgba(0, 0, 0, 0.26);
+    --input-shadow-drop: rgba(0, 0, 0, 0.18);
+    --switch-thumb-gradient: linear-gradient(150deg, #e6edf2, #a8b8c2);
+    --switch-thumb-shadow-dark: rgba(10, 15, 20, 0.4);
+    --switch-unchecked-shadow-dark: rgba(0, 0, 0, 0.34);
+    --switch-unchecked-shadow-light: rgba(255, 255, 255, 0.05);
+    --range-thumb-gradient: linear-gradient(150deg, #e6edf2, #a8b8c2);
+    --range-thumb-shadow-dark: rgba(10, 15, 20, 0.4);
+    --range-track-shadow-dark: rgba(0, 0, 0, 0.3);
+
+    --surface-neg-gradient: linear-gradient(165deg, color-mix(in srgb, var(--surface-1) 96%, #2a4447) 0%, color-mix(in srgb, var(--surface-1) 92%, #2a4447) 100%);
+    --surface-neg-shadow-dark: rgba(0, 0, 0, 0.3);
+    --surface-neg-shadow-light: rgba(255, 255, 255, 0.04);
+    --surface-input-bg: linear-gradient(160deg, #202a32 0%, #1a242c 100%);
+    --profile-chip-border: rgba(58, 75, 88, 0.4);
+    --profile-chip-shadow-inset: rgba(255, 255, 255, 0.03);
+    --profile-chip-shadow-lift: -1px -1px 2px rgba(255, 255, 255, 0.02);
+    --profile-chip-shadow-dark: rgba(0, 0, 0, 0.16);
+    --slider-label-color: #e6edf2;
+
+    --slider-tooltip-color: #24343f;
+    --input-placeholder-color: #b7c7d6;
+
+    --panel-highlight: rgba(0, 0, 0, 0.2);
+    --panel-glow: rgba(0, 0, 0, 0.15);
+    --elevation-flat-top-gloss: rgba(255, 255, 255, 0.08);
+}
+
+body[data-theme="dark"] .btn-primary:active {
+    background: linear-gradient(180deg, color-mix(in srgb, var(--btn-primary-bg-end), black 18%) 40%, var(--btn-primary-bg-end) 100%);
+    box-shadow:
+        inset 1px 1px 3px color-mix(in srgb, var(--btn-primary-depth), black 30%),
+        inset 0px 5px 10px color-mix(in srgb, var(--btn-primary-press-bottom), black 24%),
+        2px 2px 6px color-mix(in srgb, var(--btn-active-white-lift), black 60%),
+        var(--btn-shadow-pressed-soft),
+        0 0 10px color-mix(in srgb, var(--btn-primary-glow), black 40%);
+}
+
+body[data-theme="dark"] .btn-secondary:active {
+    background: linear-gradient(180deg, color-mix(in srgb, var(--btn-secondary-bg-end), black 22%) 40%, var(--btn-secondary-bg-end) 100%);
+    box-shadow:
+        inset -1px -1px 3px color-mix(in srgb, var(--surface-1), black 30%),
+        inset 1px 1px 3px color-mix(in srgb, var(--btn-secondary-press-inner), black 40%),
+        inset 2px 3px 10px color-mix(in srgb, var(--btn-secondary-depth), black 30%),
+        -1px -1px 3px color-mix(in srgb, var(--bg), black 30%),
+        2px 2px 6px color-mix(in srgb, var(--btn-white-strong), black 60%),
+        var(--btn-press-soft),
+        0 0 10px color-mix(in srgb, var(--btn-surface-edge), black 40%);
+}
+
+body[data-theme="dark"] .btn-danger:active {
+    box-shadow:
+        inset 0 3px 7px color-mix(in srgb, var(--btn-danger-press-top), black 40%),
+        inset 0 5px 15px color-mix(in srgb, var(--btn-danger-press-bottom), black 30%),
+        inset 2px 3px 5px color-mix(in srgb, var(--btn-danger-depth), black 30%),
+        2px 2px 6px color-mix(in srgb, var(--btn-white-strong), black 70%),
+        var(--btn-press-soft),
+        0 0 10px color-mix(in srgb, var(--btn-danger-glow), black 40%);
+}
+
+/* ========== FOREST ========== */
+body[data-theme="forest"] {
+    --elevation-flat-border: rgba(60, 90, 70, 0.11);
+    --elevation-flat-shadow: 0 2px 5px rgba(60, 90, 70, 0.13);
+    --bg: #e3ece5;
+    --surface-1: #d5e3d8;
+    --surface-2: #e0ebe3;
+    --surface-3: #edf4ee;
+    --surface: var(--surface-2);
+    --border: #b4cab8;
+    --text: #1f3b2f;
+    --text-muted: #587261;
+    --primary: #2d7a5d;
+    --primary-strong: #469876;
+    --focus: #2d7a5d;
+    --surface-grad: linear-gradient(160deg, #edf4ee 0%, #e0ebe3 38%, #d9e5dd 100%);
+    --shadow-sm: 0 10px 18px rgba(47, 83, 61, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    --shadow-raised: 0 20px 36px rgba(47, 83, 61, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.92);
+    --shadow-modal: 0 12px 20px rgba(47, 83, 61, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.86);
+    --shadow-pressed: inset 0 4px 10px rgba(47, 83, 61, 0.24), inset 0 -2px 4px rgba(255, 255, 255, 0.46);
+    --shadow-neu-glow: -3px -3px 7px rgba(255, 255, 255, 0.56), 3px 3px 8px rgba(79, 119, 95, 0.16);
+
+    --shadow-hover: 0 6px 10px rgba(47, 83, 61, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.84);
+    --btn-secondary-depth: rgba(47, 83, 61, 0.16);
+
+    --btn-shadow-drop: 0 8px 14px rgba(47, 83, 61, 0.15);
+    --btn-shadow-side: 6px 6px 12px rgba(47, 83, 61, 0.12);
+    --btn-shadow-side-soft: 3px 3px 7px rgba(47, 83, 61, 0.1);
+    --btn-shadow-pressed-soft: -1px -1px 5px rgba(79, 119, 95, 0.24);
+    --btn-press-soft: -1px -1px 5px rgba(79, 119, 95, 0.24);
+
+    --btn-surface-edge: color-mix(in srgb, var(--surface-1), black 8%);
+    --btn-surface-press-edge: color-mix(in srgb, var(--surface-1), black 16%);
+    --btn-press-highlight: color-mix(in srgb, var(--surface-1), white 86%);
+
+    --btn-primary-bg-start: color-mix(in srgb, var(--primary-strong) 92%, #52ad81);
+    --btn-primary-bg-end: var(--primary);
+    --btn-primary-depth: rgba(45, 122, 93, 0.16);
+    --btn-primary-press-top: color-mix(in srgb, var(--primary), black 10%);
+    --btn-primary-press-bottom: color-mix(in srgb, var(--primary), white 35%);
+    --btn-primary-glow: rgba(45, 122, 93, 0.12);
+
+    --btn-secondary-bg-start: color-mix(in srgb, var(--surface-2), white 8%);
+    --btn-secondary-bg-end: color-mix(in srgb, var(--surface), black 8%);
+    --btn-secondary-press-inner: rgba(0, 0, 0, 0.42);
+
+    --btn-danger-bg-start: #975e4d;
+    --btn-danger-bg-end: #7b4537;
+    --btn-danger-depth: rgba(123, 69, 55, 0.16);
+    --btn-danger-press-top: rgba(0, 0, 0, 0.56);
+    --btn-danger-press-bottom: rgba(151, 94, 77, 0.68);
+    --btn-danger-glow: rgba(151, 94, 77, 0.12);
+
+    --btn-white-soft: rgba(255, 255, 255, 0.78);
+    --btn-white-strong: rgba(255, 255, 255, 0.92);
+    --btn-active-white-lift: rgba(255, 255, 255, 0.52);
+
+    --card-shadow-inset: rgba(79, 119, 95, 0.08);
+    --input-bg-gradient: linear-gradient(160deg, #e3ebea 0%, #dae5e1 100%);
+    --input-shadow-inner: rgba(47, 83, 61, 0.12);
+    --switch-thumb-gradient: linear-gradient(150deg, #ffffff, #d4e4d8);
+    --switch-thumb-shadow-dark: rgba(47, 83, 61, 0.28);
+    --range-thumb-gradient: linear-gradient(150deg, #ffffff, #d0e4d8);
+    --range-thumb-shadow-dark: rgba(47, 83, 61, 0.28);
+    --range-track-shadow-dark: rgba(79, 119, 95, 0.18);
+
+    --surface-neg-gradient: linear-gradient(165deg, color-mix(in srgb, var(--surface-1) 96%, #9bb8a8) 0%, color-mix(in srgb, var(--surface-1) 92%, #9bb8a8) 100%);
+    --surface-neg-shadow-dark: rgba(47, 83, 61, 0.12);
+    --surface-input-bg: linear-gradient(160deg, #e3ebea 0%, #dae5e1 100%);
+    --profile-chip-border: rgba(180, 202, 184, 0.32);
+    --profile-chip-shadow-inset: rgba(255, 255, 255, 0.74);
+    --profile-chip-shadow-lift: -2px -2px 6px rgba(255, 255, 255, 0.44);
+    --profile-chip-shadow-dark: rgba(79, 119, 95, 0.1);
+    --slider-label-color: #eef5f2;
+
+    --slider-tooltip-color: #1f3b2f;
+}
+
+/* Override direto de botões para garantir aderência total ao tema */
+.btn-primary {
+    color: var(--btn-primary-text);
+    background: linear-gradient(170deg, var(--btn-primary-bg-start) 0%, var(--btn-primary-bg-end) 100%);
+    border-color: var(--btn-primary-border);
+    box-shadow: inset 0 1px 0 var(--btn-primary-highlight), 0 0 2px color-mix(in srgb, var(--surface-2), black 100%), 1px 1px 3px var(--btn-white-soft), -1px -1px 3px var(--btn-white-soft), var(--btn-shadow-drop), -4px -4px 8px var(--btn-white-soft), var(--btn-shadow-side), 0 0 12px var(--btn-primary-glow);
+}
+
+.btn-secondary {
+    color: var(--btn-secondary-text);
+    background: linear-gradient(-183deg, var(--btn-secondary-bg-start) 25%, var(--btn-secondary-bg-end) 100%);
+    box-shadow: inset 0 1px 0 var(--btn-white-soft), -2px -2px 6px var(--btn-white-soft), var(--btn-shadow-side-soft), 0 0 10px var(--btn-surface-edge);
+}
+
+.btn-danger {
+    color: var(--btn-danger-text);
+    background: linear-gradient(170deg, var(--btn-danger-bg-start) 0%, var(--btn-danger-bg-end) 100%);
+    border-color: var(--btn-danger-border);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 0 2px color-mix(in srgb, var(--surface-2), black 100%), 1px 1px 3px var(--btn-white-soft), -1px -1px 3px var(--btn-white-soft), var(--btn-shadow-drop), -3px -3px 7px var(--btn-white-soft), var(--btn-shadow-side), 0 0 12px var(--btn-danger-glow);
+}
+
+.btn-primary:active {
+    background: linear-gradient(180deg, var(--btn-primary-bg-start) 30%, var(--btn-primary-bg-end) 100%);
+    box-shadow:
+        inset 0px 3px 7px rgba(0, 0, 0, 0.5),
+        inset 1px 1px 3px var(--btn-primary-depth),
+        inset 0px 5px 10px var(--btn-primary-press-bottom),
+        2px 2px 6px var(--btn-active-white-lift),
+        var(--btn-shadow-pressed-soft),
+        0 0 10px var(--btn-primary-glow);
+}
+
+.btn-secondary:active {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.213) 30%, rgba(0, 0, 0, 0.083) 100%);
+    box-shadow:
+        inset -1px -1px 3px var(--surface-1),
+        inset 1px 1px 3px var(--btn-secondary-press-inner),
+        inset 2px 3px 10px var(--btn-secondary-depth),
+        -1px -1px 3px var(--bg),
+        2px 2px 6px var(--btn-white-strong),
+        var(--btn-press-soft),
+        0 0 10px var(--btn-surface-edge);
+}
+
+.btn-danger:active {
+    background: linear-gradient(180deg,
+            color-mix(in oklab, var(--btn-danger-bg-start) 78%, #ff8a72) 18%,
+            color-mix(in oklab, var(--btn-danger-bg-start) 38%, var(--btn-danger-bg-end)) 62%,
+            var(--btn-danger-bg-end) 100%);
+    box-shadow:
+        inset 0 3px 7px var(--btn-danger-press-top),
+        inset 0 5px 15px var(--btn-danger-press-bottom),
+        inset 2px 3px 5px var(--btn-danger-depth),
+        2px 2px 6px var(--btn-white-strong),
+        var(--btn-press-soft),
+        0 0 10px var(--btn-danger-glow);
+}
